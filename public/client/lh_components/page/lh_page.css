@@ -1,0 +1,46 @@
+.grid-seporator{
+	width: 1040px;height: 50px;
+	background-color: #00b38a;
+	position: relative;
+	top: 5px;
+}
+.grid-seporator>ul{
+	/*text-align: center;*/
+	/*width: 670px;*/
+	position: absolute;
+	left: 10px;
+	list-style: none;
+	font-size: 0;
+	margin-top: 10px;
+}
+.grid-seporator>ul>li{
+	display: inline-block;
+	font-size: 14px;
+	border: 1px solid transparent;
+	color: white;
+	padding: 3px 5px;
+	margin-right: 25px;
+	cursor: pointer;
+}
+.grid-seporator>ul>input{
+	background-color: #00b38a;
+	padding: 2px 2px;
+	border: 1px solid white;
+	color: white;
+	cursor: pointer;
+}
+.grid-seporator>ul>li.click:hover{border-bottom: 1px solid white;}
+.grid-seporator>ul>li.active{border-bottom: 1px solid white;}
+.grid-seporator>.select>select{
+	position: absolute;
+	top: 15px;right: 50px;
+	/*height: 20px;line-height: 20px;*/
+}
+.grid-seporator>.select>span{
+	display: inline-block;
+	width: 40px;height: 100%;
+	line-height: 50px;
+	position: absolute;
+	right: 5px;
+	color: white;
+}

@@ -1,0 +1,108 @@
+*{padding:0;margin:0;}
+body,html{width: 100%;height: 100%;}
+a{text-decoration: none;}
+ul{list-style: none;}
+
+/*airport  小火箭*/
+#airport{
+    position:fixed;
+    display:none;
+    width: 50px;height: 50px;
+    bottom:100px;right:100px;
+    background-image: url('../images/backtop-1.png');
+    background-repeat: no-repeat;
+    z-index:99;
+}
+#airport:hover{
+    background-image: url('../images/backtop-2.png');
+}
+
+/*头部登陆条  */
+#title{
+    width: 100%;
+    font-size: 14px;
+    height: 31px;
+    line-height: 31px;
+    background: #333333;
+    min-width: 600px;
+}
+#title>#title-content{
+    width: 1288px;
+    margin: 0 auto;
+    height: 100%;
+}
+#title>#title-content>#title-left{
+    display: inline-block;
+}
+#title>#title-content>#title-right{
+    display: inline-block;
+    float:right;
+}
+#title>#title-content>#title-left>span #nav-logo{color:#08d7a2;margin-right:5px;}
+#title>#title-content>#title-left>span #nav-logo>img{margin-right:5px;vertical-align:sub;} 
+#title>#title-content>#title-left>span #nav-a{color:#c4c3c3;}
+#title>#title-content>#title-right>span a{color:#c4c3c3;}
+#title>#title-content>#title-left>span #nav-a:hover{color:white;}
+#title>#title-content>#title-right>span a:hover{color:white;}
+#title>#title-content>#title-right>span.titleuser{position: relative;z-index: 99}
+#title>#title-content>#title-right>span.titleuser:hover ul{display: block;}
+#title>#title-content>#title-right>span.titleuser ul{position: absolute;right: -29px;
+    display: none;top: -8px;text-align: center;cursor: pointer;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child{
+    background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child:hover{ background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li{width: 90px;background-color: #333333;color: #9f9f9f}
+#title>#title-content>#title-right>span.titleuser ul li:hover{color:white;background-color: #111;}
+/*目录条  */
+#menu{width: 100%;height:57px;background: #fafafa;margin-top:-5px;min-width: 600px; }
+#menu>#menu-content{width:1200px;height: 100%;margin: 0 auto;}
+#menu>#menu-content>#menu-logo{float:left;margin-top:6px; }
+#menu>#menu-content>#menu-logo>.menu-national{vertical-align:super;}
+#menu>#menu-content>#menu-logo>.menu-place{
+    vertical-align:super;
+    font-size: 12px;
+    color:#999999;
+    margin-left:5px; 
+    cursor: pointer;
+}
+#menu>#menu-content>ul{margin-left:230px; margin-top:5px;}
+#menu>#menu-content>ul>li{
+    float:left;
+    margin-left:5%;
+    line-height: 50px;
+    font-size:19px;
+}
+#menu>#menu-content>ul>li>a{display:inline-block;color:#999;height: 55px;}
+#menu>#menu-content>ul>li:nth-child(1)>a{color:green;border-bottom:2px solid green;}
+#menu>#menu-content>ul>li>a:hover{color:green;border-bottom:2px solid green;}
+
+
+
+
+
+/*footer  */
+#footer{margin-top:30px;width: 100%;border-top:1px solid #ccc;min-width: 600px;}
+#footer>#content-footer{
+    border-top:1px solid #ccc;
+    width: 1200px;height: 60px;
+    margin: 0 auto;
+    position: relative;
+}
+#footer>#content-footer>img{
+    display: inline-block;
+    margin-top: 5px;
+    margin-left:50px; 
+}
+#footer>#content-footer>.img{
+    width: 150px;height: 150px;
+    position: absolute;
+    bottom:102%;
+    display: none; 
+}
+#footer>#content-footer>.img:nth-child(1){left:200px;}
+#footer>#content-footer>.img:nth-child(2){left:300px;}
+#footer>#content-footer>.img:nth-child(3){left:370px;}
+#footer>#content-footer>a{font-size:14px;color:#333;display: inline-block;margin: 5px;}
+#footer>#content-footer>span{font-size:13px;color:#aaa;}
+#footer>#content-footer>a:hover{color:#00b33a;}
+#footer>#content-footer>p{text-align: center;font-size:13px;color:#aaa;}

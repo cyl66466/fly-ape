@@ -1,0 +1,9 @@
+Vue.component('tabs',{
+	template:'#tabs',
+	methods:{
+		delTab:function(index){
+			this.$store.commit("tabs/delTab",index);
+			this.$store.commit("grid/delGrid",index);
+		}
+	}
+});

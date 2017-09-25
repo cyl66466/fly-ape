@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拉钩</title>
+    <link rel="stylesheet" href="component/nav/nav.css">
+    <link rel="stylesheet" href="css/showResume.css">
+</head>
+<body>
+    <template id="toptitle">
+        <div id="title">
+                <div id="title-content">
+                    <div id="title-left">
+                        <span><a href="index.html" id="nav-logo"><img src="images/app_phone.png">拉勾APP</a></span>
+                        <span><a href="index.html" id="nav-a">| &nbsp;进入企业版</a></span>
+                    </div>
+                    <div id="title-right" v-if="isLogin">
+                        <span><a href="login.html">登陆</a></span>
+                        <span><a href="login.html">| 注册</a></span>
+                    </div>
+                    <div id="title-right" v-else>
+                        <span><a href="#">消息</a></span>
+                        <span><a href="showResume.html">| 我的简历</a></span>
+                        <span><a href="#">| 投递箱</a></span>
+                        <span><a href="#">| 收藏夹</a></span>
+                        <span class="titleuser">
+                            <a href="#">| {{usename}}</a>
+                            <ul>
+                                <li>|</li>
+                                <li>我的订阅</li>
+                                <li>职位邀请</li>
+                                <li>账号设置</li>
+                                <li @click="quit">退出</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </template>
+
+
+<div id="contentt">
+    <div id="airport"></div><!-- 小火箭 -->
+    <toptitle></toptitle>
+    
+    <div id="menu">
+        <div id="menu-content">
+            <div id="menu-logo">
+                <img src="images/logo.png" alt="">
+            </div>
+             <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="company.html"  target="_self">公司</a></li>
+                    <li><a href="campaus.html"  target="_blank">校园</a></li>
+                    <li><a href="community.html"  target="_self">言职</a></li>
+            </ul>            
+        </div>
+    </div>
+    <div id="content">
+        <contentdata></contentdata>
+        <div id="content-dir">
+            <ul class="dir-top">
+                <li>
+                    <span class="dir-span dir-span1"></span>
+                    <span class="dir-text">投递箱<span>
+                </li>
+                <li>
+                    <span class="dir-span dir-span2"></span>
+                    <span class="dir-text">邀请函</span>
+                </li>
+                <li>
+                    <span class="dir-span dir-span3"></span>
+                    <span class="dir-text">收藏夹<span>
+                </li>
+                <li>
+                    <span class="dir-span dir-span4"></span>
+                    <span class="dir-text">订阅栏</span>
+                </li>
+            </ul>
+            <span class="upload">
+                <span class="upload-img"></span>
+                <a>我要上传附件简历</a>
+            </span>
+            <div id="completeness">
+                <span class="com-span1">简历完整度 :</span>
+                <span class="com-span2"></span>
+                <span class="com-span3"><a href="writeResume.html">编辑简历</a></span>
+                <span class="com-span4"></span>
+                <span class="com-span5"></span>
+            </div>
+            <ul id="dir-ul">
+                <li class=" dir-li-show"><span class="dirSpan dir-span1"></span><a href="#data-photo" class="dir-a-show">基本信息</a></li>
+                <li><span class="dirSpan dir-span2"></span><a href="#data-edu1">教育经历</a></li>
+                <li><span class="dirSpan dir-span3"></span><a href="#data-edu2">工作经历</a></li>
+                <li><span class="dirSpan dir-span4"></span><a href="#data-edu3">期望工作</a></li>
+                <li><span class="dirSpan dir-span5"></span><a href="#data-edu4">技能简述</a></li>
+                <li><span class="dirSpan dir-span6"></span><a href="#data-edu5">自我描述</a></li>
+            </ul>
+        </div>
+   </div>
+    <div id="footer">
+        <div id="content-footer">
+            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+            <a class="footer-link">拉勾app<img src="images/new_v1_534bcc8.png"></img></a>
+            <a class="footer-link" href="#">拉勾微信</a>
+            <a class="footer-link" href="#">拉勾小程序</a>
+            <a href="#">拉勾微博</a>
+            <a href="#">帮助中心</a>
+            <a href="#">联系我们</a>
+            <a href="#">招聘解决方案</a>
+            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+        </div>
+    </div>
+ </div>
+    <template id="contentdata">
+        <div>
+            <div id="content-data" v-if='hasresume'>
+              
+                    <div id="data-photo">
+                        <div class="photo">
+                            <img :src="datas.imgUrl" alt="" class="photo1">
+                        </div>
+                    </div>
+                    <div id="data-name" v-text="datas.Aname"></div>
+                    <div id="data-basic">
+                        <span class="b1"></span>
+                        <span class="b2" v-text="datas.Asex"></span><br>
+                        <span class="b3"></span>
+                        <span class="b4" v-text="datas.Aphone"></span>
+                        <span class="b5"></span>
+                        <span class="b6" v-text="datas.Aemail"></span>
+                    </div>
+                    <hr class="data-hr1">
+                    <div class="data-edu" id="data-edu1">教育经历</div>
+                    <ul id="edus">
+                        <li><h4>学校名称 :</h4><span v-text="datas.Bschool"></span></li>
+                        <li><h4>所学专业 :</h4><span v-text="datas.Bobject"></span></li>
+                        <li><h4>学历 :</h4><span v-text="datas.Bcurtrul"></span></li>
+                    </ul>
+                    <hr class="data-hr1">
+                    <div class="data-edu"  id="data-edu2">工作经历</div>
+                    <div class="data-work" v-text="datas.Bexperience"></div>
+                    <hr class="data-hr1">
+                    <div class="data-edu" id="data-edu3">期望工作</div>
+                    <div class="data-hope" >
+                        <ul>
+                            <li></li>
+                            <li  v-text="datas.Cwant"></li>
+                            <li></li>
+                            <li  v-text="datas.Ctype"></li>
+                            <li></li>
+                            <li  v-text="datas.Cwhere"></li>
+                            <li></li>
+                            <li  v-text="datas.Csalary"></li>
+                        </ul>
+                    </div>
+                    <hr class="data-hr1">
+                    <div class="data-edu"  id="data-edu4">技能简述</div>
+                    <div class="data-work  data-skill" v-text="datas.Dexperence"></div>
+                    <hr class="data-hr1">
+                    <div class="data-edu"  id="data-edu5">自我描述</div>
+                    <div class="data-work" v-text="datas.Dend"></div>
+                 
+            </div>
+            <div v-else id="content-false">
+                <p>该用户还未创建简历，<a href="writeResume.html">点我</a>去创建吧</p>
+
+            </div>
+        </div>
+    </template>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/showResume_vue.js"></script>
+    <script type="text/javascript" src="js/showResume_jquery.js"></script>
+    <script src="js/clientStorge.js"></script>
+    <script src="component/nav/nav.js"></script>
+    <script> 
+        var vm=new Vue({
+            el:"#contentt",
+            components:{toptitle:toptitle},
+
+        });
+    </script>
+</body>
+</html>

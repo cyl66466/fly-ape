@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="common.css">
+	<link rel="shortcut icon" href="../images/pagelogo.png"/>
+
+	<script src="../js/jquery-3.2.1.min.js"></script>
+
+    <!-- vue模板引入 -->
+    <script src="../js/vue.js"></script>
+    <script src="../js/vue-resource.js"></script>
+    <script src="../js/clientStorge.js"></script>
+    <script src="common.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div id="airport"></div><!-- 小火箭 -->
+	    <!-- top 模板 -->
+	    <toptitle :is-login="isLogin" :usename="usename" @quit="quit"></toptitle>
+        <div id="menu">
+            <div id="menu-content">
+                <div id="menu-logo">
+                    <img src="images/logo.png" alt="">
+                    <span class="menu-national">全国站</span>
+                    <span class="menu-place">[切换城市]</span>
+                </div>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="company.html"  target="_self">公司</a></li>
+                    <li><a href="campaus.html"  target="_blank">校园</a></li>
+                    <li><a href="community.html"  target="_self">言职</a></li>
+                </ul>            
+            </div>
+        </div>
+
+        <div id="footer">
+	        <div id="content-footer">
+	            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+	            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+	            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+	            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+	            <a class="footer-link">拉勾app<img src="images/new_v1_534bcc8.png"></img></a>
+	            <a class="footer-link" href="#">拉勾微信</a>
+	            <a class="footer-link" href="#">拉勾小程序</a>
+	            <a href="#">拉勾微博</a>
+	            <a href="#">帮助中心</a>
+	            <a href="#">联系我们</a>
+	            <a href="#">招聘解决方案</a>
+	            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+	            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+	        </div>
+   		</div>
+	</div>
+
+	<!-- 顶部组件 -->
+	<template id="toptitle">
+        <div id="title">
+                <div id="title-content">
+                    <div id="title-left">
+                        <span><a href="company.html" id="nav-logo"><img src="images/app_phone.png">拉勾APP</a></span>
+                        <span><a href="#" id="nav-a">| &nbsp;进入企业版</a></span>
+                    </div>
+                    <div id="title-right" v-if="isLogin">
+                        <span><a href="login.html">登陆</a></span>
+                        <span><a href="#">| 注册</a></span>
+                    </div>
+                    <div id="title-right" v-else>
+                        <span><a href="#">消息</a></span>
+                        <span><a href="#">| 我的简历</a></span>
+                        <span><a href="#">| 投递箱</a></span>
+                        <span><a href="#">| 收藏夹</a></span>
+                        <span class="titleuser">
+                            <a href="#">| {{usename}}</a>
+                            <ul>
+                                <li>|</li>
+                                <li>我的订阅</li>
+                                <li>职位邀请</li>
+                                <li>账号设置</li>
+                                <li @click="quit">退出</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </template>
+    <script>
+        var toptitle=Vue.extend({
+            template:"#toptitle",
+            props:["isLogin","usename"],
+            data:function(){
+                return {
+
+                }
+            },
+            methods:{
+                quit:function(){
+                    this.$emit("quit");
+                }
+            }
+
+        })
+    </script>
+
+<script>
+    var vm=new Vue({
+        el:"#app",
+        components:{toptitle:toptitle},
+        data:{
+            usename:"",
+            isLogin:true, //判断用户是否登录
+            password:"",
+            toggle:true,   //切换登录或者注册
+        },
+        created:function(){
+            if(client.fetch()==""){
+                this.isLogin=true;
+            }else{
+                this.isLogin=false;
+                // console.log(client.fetch().usename)
+                this.usename=client.fetch().usename;
+            }
+        },
+        methods:{
+            quit:function(){ //退出登录
+                if(confirm("退出登录？")){
+                    this.isLogin=true;
+                    client.clear();
+                }else return;
+            
+            },
+        }
+    })
+</script>
+</body>
+</html>

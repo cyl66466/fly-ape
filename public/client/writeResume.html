@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/writeResume.css">
+	<link rel="shortcut icon" href="images/pagelogo.png"/>
+	<script src="js/jquery-3.2.1.min.js"></script>
+    <!-- vue模板引入 -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script src="js/clientStorge.js"></script>
+    <script src="js/writeResume.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div id="airport"></div><!-- 小火箭 -->
+	    <!-- top 模板 -->
+	    <toptitle></toptitle>
+        <!-- 菜单 -->
+        <div id="menu">
+            <div id="menu-content">
+                <div id="menu-logo">
+                    <img src="images/logo.png" alt="">
+                    <span class="menu-national">全国站</span>
+                    <span class="menu-place">[切换城市]</span>
+                </div>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="company.html"  target="_self">公司</a></li>
+                    <li><a href="campaus.html"  target="_blank">校园</a></li>
+                    <li><a href="community.html"  target="_self">言职</a></li>
+                </ul>            
+            </div>
+        </div>
+
+        <resume></resume>
+        <!-- 页脚 -->
+        <div id="footer">
+	        <div id="content-footer">
+	            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+	            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+	            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+	            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+	            <a class="footer-link">拉勾app<img src="images/new_v1_534bcc8.png"></img></a>
+	            <a class="footer-link" href="#">拉勾微信</a>
+	            <a class="footer-link" href="#">拉勾小程序</a>
+	            <a href="#">拉勾微博</a>
+	            <a href="#">帮助中心</a>
+	            <a href="#">联系我们</a>
+	            <a href="#">招聘解决方案</a>
+	            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+	            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+	        </div>
+   		</div>
+	</div>
+
+	<!-- 顶部组件 -->
+	<template id="toptitle">
+        <div id="title">
+                <div id="title-content">
+                    <div id="title-left">
+                        <span><a href="company.html" id="nav-logo"><img src="images/app_phone.png">拉勾APP</a></span>
+                        <span><a href="#" id="nav-a">| &nbsp;进入企业版</a></span>
+                    </div>
+                    <div id="title-right" v-if="isLogin">
+                        <span><a href="login.html">登陆</a></span>
+                        <span><a href="#">| 注册</a></span>
+                    </div>
+                    <div id="title-right" v-else>
+                        <span><a href="#">消息</a></span>
+                        <span><a href="showResume.html">| 我的简历</a></span>
+                        <span><a href="#">| 投递箱</a></span>
+                        <span><a href="#">| 收藏夹</a></span>
+                        <span class="titleuser">
+                            <a href="#">| {{usename}}</a>
+                            <ul>
+                                <li>|</li>
+                                <li>我的订阅</li>
+                                <li>职位邀请</li>
+                                <li>账号设置</li>
+                                <li @click="quit">退出</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </template>
+    <!-- 上传图片组件 -->
+    <template id="imgup">
+        <div id="preImg">
+            <label for="inputImg"  class="icon-user"> <img src="images/shadow.png" alt="" class="photo2">   </label>
+                     
+            <img :src='imgUrl' alt="" class="photo1">
+            <input type="file"  @change="uploading" ref="inputer" id="inputImg">
+        </div>
+    </template>
+
+    <!-- 简历组件 -->
+    <template id="resume">
+        <div >
+            <div id="resumeMain" v-if="true">
+                <ul id="resumeUl">
+                    <li class="active"><!-- 用户基本信息 姓名 手机号 邮箱 -->
+                        <div class="preImg">
+                            <imgup :img-url="resume.imgUrl" @img-preview="upImg"></imgup>
+
+                        </div>
+                        <div class="radio" >
+                            <input type="radio" name="sex" value="男" v-model="resume.Asex"><label for="">我是男生</label>
+                            <input type="radio" name="sex" value="女" v-model="resume.Asex"><label for="">我是女生</label>
+                        </div>
+                        <div>
+                            <label for="">请输入姓名</label>
+                            <input type="text" v-model="resume.Aname" @blur="newResume[3].showExp=true">
+                            <span v-show="newResume[3].showExp&&!/^[\u4e00-\u9fa5]{2,4}$/.test(resume.Aname)">姓名为二到四位中文汉字</span>
+                        </div>              
+                        <div>
+                            <label for="">请输入手机号</label>
+                            <input type="text" v-model="resume.Aphone" @blur="newResume[4].showExp=true">
+                            <span v-show="newResume[4].showExp&&!/^1\d{10}$/.test(resume.Aphone)">请输入正确的手机号码</span>
+                        </div>
+                        <div>
+                            <label for="">请输入邮箱</label>
+                            <input type="text" v-model="resume.Aemail" @blur="newResume[5].showExp=true">
+                            <span v-show="newResume[5].showExp&&!/^\w+@\w+.\w+/i.test(resume.Aemail)">请输入正确的邮箱格式</span>
+                        </div>
+                        <span class="nextLi">下一步</span>
+                    </li>
+                    <li> <!-- 文化程度 毕业时间 工作经历  -->
+                        <p>我的经历</p>
+                        <div>
+                            <label for="">毕业学校</label>
+                            <input type="text" v-model="resume.Bschool" @blur="newResume[7].showExp=true">
+                            <span v-show="newResume[7].showExp&&!/^\S+$/.test(resume.Bschool)">请输入学校</span>                       
+                        </div>
+                        <div>
+                            <label for="">所学专业</label>
+                            <input type="text" v-model="resume.Bobject" @blur="newResume[8].showExp=true">
+                            <span v-show="newResume[8].showExp&&!/^\S+$/.test(resume.Bobject)">请输入专业</span>   
+                        </div>
+                        <div>
+                            <label for="">学历</label>
+                            <select name="" id="" v-model="resume.Bcurtrul">
+                                <option value="专科">专科</option>
+                                <option value="本科">本科</option>
+                                <option value="硕士">硕士</option>
+                                <option value="博士">博士</option>
+                            </select>
+                        </div>
+                        <div class="area">
+                            <label for="">相关经历</label>
+                            <textarea name="" id="" v-model="resume.Bexperience"></textarea>
+                        </div>
+                        <span class="lastLi">上一步</span>
+                        <span class="nextLi">下一步</span>
+                    </li>
+                    <li> <!--c 期望工作  -->
+                        <p>期望工作</p>
+                        <div>
+                            <label for="">职位选择</label>
+                            <input type="text" v-model="resume.Cwant">                       
+                        </div>
+                        <div>
+                            <label for="">期待薪资</label>
+                            <select name="" id="" v-model="resume.Csalary">
+                                <option value="2000~4000">2000~4000</option>
+                                <option value="4000~8000">4000~8000</option>
+                                <option value="8000~10000">8000~10000</option>
+                                <option value="10000+">10000+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">工作类型</label>
+                            <select name="" id="" v-model="resume.Ctype">
+                                <option value="全职">全职</option>
+                                <option value="兼职">兼职</option>
+                                <option value="实习">实习</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="">工作地点</label>
+                            <input type="text" v-model="resume.Cwhere">                       
+                        </div>
+                        <span class="lastLi">上一步</span>
+                        <span class="nextLi">下一步</span>
+                    </li>
+                    <li>    <!-- d 求职方向，总结  -->
+                        <!-- <p>自我总结</p> -->
+                         <div class="tips">
+                            <p>我会干些什么</p>
+                            <textarea name="" id="" v-model="resume.Dexperence"></textarea>
+                        </div>
+                        <div class="tips">
+                            <p>用一句话让别人记住你吧</p>
+                            <textarea name="" id="" v-model="resume.Dend"></textarea>
+                        </div>
+                        <span class="lastLi">上一步</span>
+                        <span class="sure" @click="submit">提交</span>
+                        <span class="cancel" @click="cancel">取消</span>
+                    </li>
+                </ul>
+            </div>
+            <div v-else>
+                还没写简历
+            </div>
+        </div>
+    </template>
+
+<script src="component/nav/nav.js"></script>
+
+
+<script>
+    var vm=new Vue({
+        el:"#app",
+        components:{toptitle:toptitle,resume:resume},
+    })
+</script>
+</body>
+</html>

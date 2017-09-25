@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/resume.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script>
+	<script src="js/resume.js"></script>
+	<style>
+		#preImg{
+			position: relative;
+		}
+		#preImg input#inputImg{
+			font-size: 0px;
+			opacity: 1;
+			width: 0px;
+			height: 0px;
+			/*border: 1px solid red;*/
+		}
+		#preImg label{
+			margin:10px auto;
+			width:90px;
+			height: 90px;
+			font-color:white;
+			border-radius: 80px;
+			/*border:1px solid red;*/
+			background-color:white;
+			display: inline-block;
+			overflow: hidden;
+			position: relative;
+			font-size: 80px;
+		}
+		#preImg label:hover{
+			box-shadow: 3px 3px 30px #9f9f9f;
+			
+		}
+		 #preImg label img{
+			width: 100px;
+			height: 100px;
+			margin: -5px;
+			z-index: 100;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+</head>
+<body>
+	<div id="app">
+		<resume></resume>
+	</div>
+	<template id="resume">
+		<div>
+			<ul id="resumeUl">
+				<li class="active"><!-- 用户基本信息 姓名 手机号 邮箱 -->
+					<div class="preImg">
+						<imgup :img-url="resume.imgUrl" @img-preview="upImg"></imgup>
+					</div>
+					<div class="radio" >
+						<input type="radio" name="sex" value="男" v-model="resume.Asex"><label for="">我是男生</label>
+						<input type="radio" name="sex" value="女" v-model="resume.Asex"><label for="">我是女生</label>
+					</div>
+					<div>
+						<label for="">请输入姓名</label>
+						<input type="text" v-model="newResume[3].Aname" @blur="newResume[3].showExp=true">
+						<span v-show="newResume[3].showExp&&!/^[\u4e00-\u9fa5]{2,4}$/.test(newResume[3].Aname)">姓名为二到四位中文汉字</span>
+					</div>				
+					<div>
+						<label for="">请输入手机号</label>
+						<input type="text" v-model="newResume[4].Aphone" @blur="newResume[4].showExp=true">
+						<span v-show="newResume[4].showExp&&!/^1\d{10}$/.test(newResume[4].Aphone)">请输入正确的手机号码</span>
+					</div>
+					<div>
+						<label for="">请输入邮箱</label>
+						<input type="text" v-model="newResume[5].Aemail" @blur="newResume[5].showExp=true">
+						<span v-show="newResume[5].showExp&&!/^\w+@\w+.\w+/i.test(newResume[5].Aemail)">请输入正确的邮箱格式</span>
+					</div>
+					<span class="nextLi">下一步</span>
+				</li>
+				<li> <!-- 文化程度 毕业时间 工作经历  -->
+					<p>我的经历</p>
+					<div>
+						<label for="">毕业学校</label>
+						<input type="text" v-model="newResume[7].Bschool" @blur="newResume[7].showExp=true">
+						<span v-show="newResume[7].showExp&&!/^\S+$/.test(newResume[7].Bschool)">请输入学校</span>						
+					</div>
+					<div>
+						<label for="">所学专业</label>
+						<input type="text" v-model="newResume[8].Bobject" @blur="newResume[8].showExp=true">
+						<span v-show="newResume[8].showExp&&!/^\S+$/.test(newResume[8].Bobject)">请输入专业</span>	
+					</div>
+					<div>
+						<label for="">学历</label>
+						<select name="" id="" v-model="resume.Bcurtrul">
+							<option value="专科">专科</option>
+							<option value="本科">本科</option>
+							<option value="硕士">硕士</option>
+							<option value="博士">博士</option>
+						</select>
+					</div>
+					<div class="area">
+						<label for="">相关经历</label>
+						<textarea name="" id="" v-model="resume.Bexperience"></textarea>
+					</div>
+					<span class="lastLi">上一步</span>
+					<span class="nextLi">下一步</span>
+				</li>
+				<li>	<!--  求职方向，总结  -->
+					<p>求职意向</p>
+					<div>
+						<label for="">职位选择</label>
+						<input type="text" v-model="resume.Cwant">
+					</div>
+					<div>
+						<label for="">期待薪资</label>
+						<select name="" id="" v-model="resume.Csalary">
+							<option value="2000~4000">2000~4000</option>
+							<option value="4000~8000">4000~8000</option>
+							<option value="8000~10000">8000~10000</option>
+							<option value="10000+">10000+</option>
+						</select>
+					</div>
+					<div class="tips">
+						<p>用一句话让别人记住你吧</p>
+						<textarea name="" id="" v-model="resume.Cend"></textarea>
+					</div>
+					<span class="lastLi">上一步</span>
+					<span class="sure" @click="submit">确定</span>
+					<span class="cancel" @click="cancel">取消</span>
+				</li>
+			</ul>
+		</div>
+	</template>
+
+		<!-- 上传图片组件 -->
+	<template id="imgup">
+		<div id="preImg">			
+			<label for="inputImg"  class="icon-user"><img :src='imgUrl' alt=""></label>
+			<input type="file"  @change="uploading" ref="inputer" id="inputImg">
+		</div>
+	</template>
+
+	<script>
+		var imgup=Vue.extend({
+			template:"#imgup",
+			props:["imgUrl"],
+			data:function(){
+				return {
+					file:"",
+				}
+			},
+			methods:{
+				uploading:function(){
+					if(this.$refs.inputer.files.length==0) return;
+					var inputDom=this.$refs.inputer; // 通过dom获取文件数据
+					var file=inputDom.files[0];
+					var size=Math.floor(inputDom.files[0].size/1024);
+					if(size>12){alert("大了"); return false};
+					this.imgPreview(file);															
+				},
+				imgPreview:function(file){
+					var that=this;
+					if(!file||!window.FileReader) return;
+					if(/^image/.test(file.type)){
+						var reader=new FileReader();
+						reader.readAsDataURL(file);  // 将图片将转成 base64 格式
+						reader.onloadend=function(){   // 读取成功后的回调
+							imgUrl=this.result;				
+							// console.log(this.result);
+							that.$emit('img-preview',imgUrl);
+
+						}
+					}
+
+
+				},
+			
+			}
+
+		})
+	</script>
+
+</body>n
+<script>
+	var resume=Vue.extend({
+		template:"#resume",
+		components:{imgup:imgup},
+		data:function(){
+			return {	
+				isExp:false,
+				newResume:[],		
+				resume:{
+						username:"",
+						addDate:"",
+						imgUrl:"",	
+						Aname:'张三',
+						Aphone:"123456789",
+						Aemail:"1234@qq.com",
+						Asex:"男",
+						Bschool:"江西农大",
+						Bobject:"软件工程",
+						Bcurtrul:"本科",
+						Bgraduate:"2018",
+						Bexperience:"这是一些学校经历",
+						Cwant:"求得一份前端工程师的职位求得一份前端工程师的职位求得一份前端工程师的职位",
+						Csalary:"10000+",
+						Cwhere:"深圳",
+						Ctype:"全职",
+						Dexperence:"技能描述",
+						Dend:"我能干些什么我能干些什么我能干些什么我能干些什么我能干些什么我能干些什么",
+					}	
+				}					
+		},
+		created:function(){
+			// console.log(this.getTime());
+			var that=this;
+			Object.keys(this.resume).forEach(function(v){
+				var temp={};
+				// temp[v]=1;
+				// console.log(temp);
+				temp[v]=that.resume[v];
+				temp.showExp=false;
+				that.newResume.push(temp);   //将数据库传来的简历数据转化格式
+			})
+			// console.log(that.newResume);
+		},
+		methods:{
+			submit:function(){
+				this.$http({
+					url:"http://localhost:8080/resume/add/",
+					method:"POST",
+					data:JSON.stringify(this.resume)			
+				}).then(function(res){
+					if(res.data=="1"){
+						alert('添加成功');
+					}
+				},function(){})
+			},
+			cancel:function(){
+				if(!confirm("放弃保存？")) return;
+				else{
+
+				}
+			},
+			upImg:function(target){
+				this.resume.imgUrl=target;
+				console.log(this.resume.imgUrl);
+			},
+			getTime:function(){  //获取当前时间
+				var date=new Date();
+				var year=date.getFullYear();
+				var month=date.getMonth()+1;
+				var day=date.getDate();
+				var hour=date.getHours();
+				var minute=date.getMinutes();
+				var second=date.getSeconds();
+				return year+"-"+month+"-"+day+" "+hour+":"+minute+":"+second;
+			},
+			showRex:function(target){
+				target=true;
+				alert(target);
+			}
+		}
+	})
+</script>
+
+<script>
+	var vm=new Vue({
+		el:"#app",
+		components:{resume:resume},
+	})
+</script>
+</html>

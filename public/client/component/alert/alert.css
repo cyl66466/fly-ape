@@ -1,0 +1,70 @@
+
+div.popwindow{
+	width: 100%;
+	height: 111%;
+	background-color: rgba(0,0,0,.3);
+	position: absolute;
+	z-index: 100;
+
+}
+div.popwindow div.alert{
+	/*background-color: #08d7a2;*/
+	position: absolute;
+	background-color: #fff;
+	min-width: 150px;
+	min-height: 60px;
+	border-radius: 10px;
+	/*border: 1px solid red;*/
+	overflow: hidden;
+	left: 50%;
+	top: 50%;
+	transform:translateX(-50%) translateY(-50%);
+}
+div.popwindow div.alert div.top{
+	text-align: center;
+	position: relative;
+	background-color: green;
+	color: white;
+}
+div.popwindow div.alert div.top h2{
+	padding: 10px;
+	font-size: 20px;
+
+}
+div.popwindow div.alert div.top span{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 20px;
+	cursor: pointer;
+	/*border: 1px solid gray;*/
+	/*border-radius: 20px;*/
+}
+div.popwindow div.alert div.center{
+	text-align: center;
+	/*border:1px solid red;*/
+	margin:20px 0;
+
+}
+div.popwindow div.alert div.center span{
+	font-family: 微软雅黑;
+	padding: 10px 50px;
+	display: inline-block;
+	font-size: 25px;
+
+}
+div.popwindow div.alert div.bottom{
+	text-align: center;
+	margin: 10px auto;
+
+}
+div.popwindow div.alert div.bottom span{
+	padding: 6px 8px;
+	cursor: pointer;
+	display: inline-block;
+	/*background: linear-gradient(green,lightgreen);*/
+	background-color: green;
+	border-radius: 6px;
+	color: white;
+	margin: 0 10px;
+}

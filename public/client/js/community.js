@@ -1,0 +1,629 @@
+var contents=[
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>so，没差别。潜台词是你们男生没有女生细心，服务意识不如女生服务意识不如女生不如女生不如女不如女不如女</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	},
+	{
+		imgs:"images/head-portrait.png",
+		author:"珊珊",
+		answerName:"北鼎科技HRBP",
+		title:"面试中HR提问，你认为男女程序员之间有什么差别？",
+		text:"\
+			<p>这个问题就好比问一个前来面试行政的男生，你为什么要面试行政这个岗位？</p>\
+			<p>潜台词是行政不是女生干的活儿吗？</p>\
+			<p>这个问题就好比问一个前来面试客服的男生，你觉得你比女性客服的优势在哪里？</p>\
+			<p>潜台词是你们男生没有女生细心，服务意识不如女生。</p>\
+			<p>这个问题就好比问一个前来面试公关但长相一般的女生，你为什么要应聘公关这个岗位？</p>\
+			<p>潜台词是长成这样还面试公关岗位？</p>\
+			<p>同样，楼主面对的那个问题也是如此，看似没什么，也许是说者无意，也许是我多想，\
+			但我就是感觉这里面有潜在语境，有浓浓的刻板印象，还有一种刻奇心态。</p>\
+			<p>差别在哪里？</p>\
+			<p>有差别吗？</p>\
+			<p>女生照样能编程，男生照样能开发卫生巾。</p>\
+			<p>不看性别，看能力。</p>\
+			<p>so，没差别。</p>",
+		cur_status:"less", //记录是收缩还是展开
+		orgText:"",//原始文本
+		showText:"",
+		isShow:0,
+		switch:"展开",
+		commentNumber:88,
+		zanNumber:66
+	}
+]
+
+//airport回到顶部
+    function airport(){
+        var $body=$('body');
+        var $airport=$('#airport');
+        setInterval(function(){
+            if($body.scrollTop()>100){
+                $airport.show();
+            }else{
+                $airport.hide();
+            }
+        },3000)
+        $airport.click(function () {
+            var speed=1000;//滑动的速度
+            $body.animate({ scrollTop: 0 },speed);
+            return false;
+        });
+    }
+//footer
+    function logo(){
+        var num=0;
+        var $a=$('#footer>#content-footer>.footer-link');
+        var $img=$('#footer>#content-footer>.img');
+        $a.on('mouseover',function(){
+            num=$(this).index();
+            // console.log(num-4)
+            $img.eq(num-4).show();
+        });
+        $a.on('mouseout',function(){
+            num=$(this).index();
+            // console.log(num-4)
+            $img.eq(num-4).hide();
+        });
+    }
+
+
+
+
+
+// 右侧登录组件
+var loginRight=Vue.extend({
+	template:"#loginRight",
+	props:["loginName"],
+});
+// 全局注册loginRight
+Vue.component('loginRight',loginRight);
+// 新闻news组件
+var news=Vue.extend({
+	template:"#news",
+ 
+	data:function(){
+		return {
+			content:contents,
+			limit:166,//显示字数
+			
+		}
+	},
+	created:function(){
+
+		 if(client.fetch()==""){
+                this.isLogin=true;
+            }else{
+                this.isLogin=false;
+                // console.log(client.fetch().usename)
+                this.usename=client.fetch().usename;
+            }
+
+		for(var i=0;i<this.content.length;i++){
+			var charNumbers=this.content[i].text.length;//总字数
+			if(charNumbers>this.limit){
+				this.content[i].orgText=this.content[i].text;//原始文本
+				this.content[i].showText=this.content[i].text.substring(0,this.limit)+" ...";
+				this.content[i].text=this.content[i].showText;
+				this.content[i].isShow=1;
+			}else{
+				this.content[i].isShow=0;
+			}
+		}
+	},
+	methods:{
+		show:function(index){
+			if(this.content[index].cur_status=="less"){
+				this.content[index].text=this.content[index].orgText;
+				this.content[index].switch="收起";
+				this.content[index].cur_status="more";
+			}else{
+				this.content[index].text=this.content[index].showText;
+				this.content[index].switch="展开";
+				this.content[index].cur_status="less";
+			}
+		},
+	
+	}
+});
+// 全局注册news
+Vue.component("news",news);
+
+var vm=new Vue({
+	el:"#app",
+	components:{toptitle:toptitle},
+	data:{
+		loginName:"",
+	},
+	created:function(){
+		this.getData();
+	},
+	methods:{
+		getData:function(){
+			this.loginName=client.fetch().usename;
+		}
+	}
+
+});
+
+$(function(){
+	logo();
+	airport();
+});

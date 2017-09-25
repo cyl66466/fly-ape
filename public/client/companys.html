@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>company</title>
+	<link rel="stylesheet" href="component/company/company.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script>
+	<script src="component/company/company.js"></script>
+	<script></script>
+</head>
+<body>
+	
+	<div id="app">
+		<company></company>
+	</div>
+
+	<!-- 排序组件 -->
+	<template id="companysort">
+		<div class="companysort">
+			<span>排序方式:</span>
+			<ul v-for="(temp,index) in sortItem">			
+				<li v-text="temp" @click="changetp(index)" :class="{cpActive:index==curItem}"></li>
+			</ul>
+		</div>
+	</template>
+
+	
+	<script>
+		var companysort=Vue.extend({
+			template:"#companysort",
+			data:function(){
+				return {
+					sortItem:['默认排序↓','职位数量↓','面试评价数↓','简历处理率↓'],
+					sortIndex:['id','onlineJob','faceIns','sucPencent'],
+					curItem:0,
+				};
+			},
+			created:function(){
+
+			},
+			methods:{
+				changetp:function(index){
+					this.curItem=index;
+					// console.log(this.sortIndex[index]);
+					this.$emit('changetp',this.sortIndex[index])
+				}
+			}
+		})
+	</script>
+
+	<!-- 分页组件 -->
+	<template id="page">
+		<div class="page">
+			<button  @click="changePage(pageConfig.curIndex-1)" :disabled="pageConfig.curIndex==1">上一页</button>
+			<ul>
+				<li @click="changePage(1)"  :class="{liactive:pageConfig.curIndex==1}">1</li>
+				<span v-show="pageConfig.curIndex>=5">...</span>
+				<li v-for="i in pages" v-text="i" @click="changePage(i)" v-show="i!=1&&i<pageConfig.curIndex+3&&i>pageConfig.curIndex-2&&i!=pages" :class="{liactive:i==pageConfig.curIndex}"></li>
+				<span v-show="pageConfig.curIndex<=pages-4">...</span>
+				<li v-text="pages" @click="changePage(pages)" :class="{liactive:pageConfig.curIndex==pages}"></li>
+			</ul>
+			<button @click="changePage(pageConfig.curIndex+1)" :disabled="pageConfig.curIndex==pages">下一页</button>
+		</div>
+	</template>
+
+	<script>
+		var page=Vue.extend({
+			template:"#page",
+			props:['pageConfig'],
+			methods:{
+				changePage:function(index){				
+					index>this.pageConfig.pageGroupIndex*this.pageConfig.pageSize?
+					this.pageConfig.pageGroupIndex++:
+					this.pageConfig.curIndex=index;
+					this.$emit("change-page");
+				}
+			},
+			computed:{
+				pages:function(){
+					return Math.ceil(this.pageConfig.total/this.pageConfig.pageSize)
+				}			
+			},
+		})
+	</script>
+
+	<!-- company组件 -->
+	<template id="company">
+		<div class="companyMain">
+			<companysort @changetp="changeP"></companysort>
+			<div v-for="item in companys" class="company">
+				<ul>
+					<li><img :src='item.img'  alt=""></li>
+					<li v-text="item.name" class="companyName"></li>
+					<li v-text="item.type" class="companyType"></li>
+					<li v-text="item.introduce" class="companyIntroduce"></li>
+					<li class="underLine"></li>
+					<li class="companyPencent">
+						<ul>
+							<li>
+								<p v-text="item.faceIns"></p>
+								<p class="gray">面试评价</p>
+							</li>
+							<li>
+								<p v-text="item.onlineJob"></p>
+								<p class="gray">在招职位</p>
+							</li>
+							<li>
+								<p v-text="item.sucPencent"></p>
+								<p class="gray">简历处理率</p>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+			<page :page-config="pageConfig" @change-page="changeP"></page>
+		</div>
+	</template>
+	<script>
+		// Vue.component('companysort',companysort);
+
+	</script>
+
+	<script>
+		var company=Vue.extend({
+			template:"#company",
+			components:{companysort:companysort,page:page},
+			// components:{edit:edit},
+			data:function(){
+				return {
+					companys:[],
+					pageConfig:{curIndex:1,pageSize:4,total:45},
+				}
+			},
+			created:function(){
+				this.changeP("id");
+			},		
+			methods:{
+				getCompanyData:function(type,pageConfig){
+					console.log(pageConfig);
+					this.$http({
+						url:"http://localhost:8080/companys/getAll/",
+						method:"POST",
+						data:JSON.stringify({
+									type:type,
+									pageConfig:pageConfig
+								})//限制条件
+					}).then(function(res){
+						// var companyData=JSON.parse(res.data);
+						// console.log(123);
+						this.companys=res.data
+						// console.log(res.data);
+
+					},function(){})
+				},
+				changeP:function(type){
+					var pageConfig=this.pageConfig;
+					this.getCompanyData(type,pageConfig);
+				}
+			}
+		})
+	</script>
+	
+
+
+	<script>
+		var vm=new Vue({
+			el:"#app",
+			components:{company:company},
+		})
+	</script>
+	
+</body>
+</html>

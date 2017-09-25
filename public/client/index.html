@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>飞猿</title>
+    <link rel="shortcut icon" href="images/pagelogo.png"/>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/banner.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/banner.js"></script>
+    <!-- vue模板引入 -->
+    <script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script src="js/clientStorge.js"></script>
+</head>
+<body>
+    <template id="toptitle">
+        <div id="title">
+                <div id="title-content">
+                    <div id="title-left">
+                        <span><a href="index.html" id="nav-logo"><img src="images/app_phone.png">飞猿APP</a></span>
+                        <span><a href="index.html" id="nav-a">| &nbsp;进入企业版</a></span>
+                    </div>
+                    <div id="title-right" v-if="isLogin">
+                        <span><a href="login.html">登陆</a></span>
+                        <span><a href="login.html">| 注册</a></span>
+                    </div>
+                    <div id="title-right" v-else>
+                        <span><a href="#">消息</a></span>
+                        <span><a href="showResume.html">| 我的简历</a></span>
+                        <span><a href="#">| 投递箱</a></span>
+                        <span><a href="#">| 收藏夹</a></span>
+                        <span class="titleuser">
+                            <a href="#">| {{usename}}</a>
+                            <ul>
+                                <li>|</li>
+                                <li>我的订阅</li>
+                                <li>职位邀请</li>
+                                <li>账号设置</li>
+                                <li @click="quit">退出</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </template>
+<div id="app"> <!--  vue根节点 -->
+    <div id="airport"></div><!-- 小火箭 -->
+    <!-- top 模板 -->
+    <toptitle :is-login="isLogin" :usename="usename" @quit="quit"></toptitle>
+
+
+        <div id="menu">
+            <div id="menu-content">
+                <div id="menu-logo">
+                    <img src="images/logo.png" alt="">
+                    <span class="menu-national">全国站</span>
+                    <span class="menu-place">[切换城市]</span>
+                </div>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="company.html"  target="_self">公司</a></li>
+                    <li><a href="campaus.html"  target="_blank">校园</a></li>
+                    <li><a href="community.html"  target="_self">言职</a></li>
+                </ul>            
+            </div>
+        </div>
+    <div id="search">
+        <div id="content-search">
+            <form action="">
+                <input id="ipt" type="text" placeholder="搜索职位、公司或地点">     
+                <span id="btn"><a href="search.html">搜索</a></span>
+                <br>
+                <span id="txt">
+                    热门职位：
+                    <a href="#">web前端  </a> 
+                    <a href="#">活动运营  </a>
+                    <a href="#">Java测试  </a>
+                    <a href="#">PHP产品经理  </a>
+                    <a href="#">C++  </a>
+                    <a href="#">内容运营  </a>
+                    <a href="#">飞猿APP</a>
+                </span>  
+            </form>
+        </div>
+    </div>
+    <div id="main">
+        <div id="list">
+            <ul id="list-ul">
+                <li class="lis lis1">
+                    <span>
+                        技术 
+                        <a href="#"> Java </a>
+                        <a href="#"> Android </a>
+                        <a href="#"> PHP </a>
+                        <a href="#"> C++ </a>
+                    </span>
+                </li>
+                <li class="lis lis2">
+                    <span>
+                        产品 
+                        <a href="#"> 产品总监 </a>
+                        <a href="#"> 产品经理 </a>
+                    </span>
+                </li>
+                <li class="lis lis3">
+                    <span>
+                        设计  
+                        <a href="#"> UI设计师 </a>
+                        <a href="#"> 交互设计师 </a>
+                        <a href="#"> 网页设计师 </a>
+                    </span>
+                </li>
+                <li class="lis lis4">
+                    <span>
+                       运行  
+                        <a href="#"> Java </a>
+                        <a href="#"> Android </a>
+                        <a href="#"> PHP </a>
+                        <a href="#"> C++ </a>
+                    </span>
+                </li>
+                 <li class="lis lis5">
+                    <span>
+                       运行  
+                        <a href="#"> Java </a>
+                        <a href="#"> Android </a>
+                        <a href="#"> PHP </a>
+                        <a href="#"> C++ </a>
+                    </span>
+                </li> 
+            </ul>
+            <div class="part part1">
+                <ul>
+                    <li>
+                        <p>后端开发</p>
+                        <span>
+                            <a href="#">Java | </a>
+                            <a href="#">C++ | </a>
+                            <a href="#">PHP | </a>
+                            <a href="#">数据挖掘 | </a>
+                            <a href="#">搜索算法 | </a>
+                            <a href="#">精准推荐 | </a>
+                            <a href="#">C | </a>
+                            <a href="#">C# | </a>
+                            <a href="#">全栈工程师 | </a>
+                            <a href="#">.NET | </a>
+                            <a href="#">Hadoop | </a> 
+                            <a href="#">Python | </a>
+                            <a href="#">Delphi | </a> 
+                            <a href="#">VB | </a> 
+                            <a href="#">Perl | </a>
+                            <a href="#">Ruby | </a>
+                            <a href="#">Node.js | </a>
+                            <a href="#">Go | </a>
+                            <a href="#">ASP | </a>
+                            <a href="#">Shell | </a>
+                            <a href="#">其它...</a>         
+                        </span>
+                    </li>
+                    <li>
+                        <p>移动开发</p>
+                        <span>
+                            <a href="#">HTML5 | </a>
+                            <a href="#">Android | </a>
+                            <a href="#">iOS | </a>
+                            <a href="#">WP | </a>       
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>前端开发</p>
+                        <span>
+                            <a href="#">web前端 | </a>
+                            <a href="#">Flash | </a>
+                            <a href="#">html5 | </a>
+                            <a href="#">JavaScript | </a>       
+                            <a href="#">U3D | </a>
+                            <a href="#">COCOS2D-X</a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>人工智能</p>
+                        <span>
+                            <a href="#">深度学习 | </a>
+                            <a href="#">机器学习 | </a>
+                            <a href="#">图像处理 | </a>
+                            <a href="#">图像识别 | </a>       
+                            <a href="#">语音识别 | </a>
+                            <a href="#">机器视觉 | </a>
+                            <a href="#">算法工程师 | </a>
+                            <a href="#">自然语言处理 | </a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="part part2">
+                <ul>
+                    <li>
+                        <p>后端开发</p>
+                        <span>
+                            <a href="#">Java | </a>
+                            <a href="#">C++ | </a>
+                            <a href="#">PHP | </a>
+                            <a href="#">数据挖掘 | </a>
+                            <a href="#">搜索算法 | </a>
+                            <a href="#">精准推荐 | </a>
+                            <a href="#">C | </a>
+                            <a href="#">C# | </a>
+                            <a href="#">全栈工程师 | </a>
+                            <a href="#">.NET | </a>
+                            <a href="#">Hadoop | </a> 
+                            <a href="#">Python | </a>
+                            <a href="#">Delphi | </a> 
+                            <a href="#">VB | </a> 
+                            <a href="#">Perl | </a>
+                            <a href="#">Ruby | </a>
+                            <a href="#">Node.js | </a>
+                            <a href="#">Go | </a>
+                            <a href="#">ASP | </a>
+                            <a href="#">Shell | </a>
+                            <a href="#">其它...</a>         
+                        </span>
+                    </li>
+                    <li>
+                        <p>移动开发</p>
+                        <span>
+                            <a href="#">HTML5 | </a>
+                            <a href="#">Android | </a>
+                            <a href="#">iOS | </a>
+                            <a href="#">WP | </a>       
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>前端开发</p>
+                        <span>
+                            <a href="#">web前端 | </a>
+                            <a href="#">Flash | </a>
+                            <a href="#">html5 | </a>
+                            <a href="#">JavaScript | </a>       
+                            <a href="#">U3D | </a>
+                            <a href="#">COCOS2D-X</a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="part part3">
+                <ul>
+                    <li>
+                        <p>后端开发</p>
+                        <span>
+                            <a href="#">Java | </a>
+                            <a href="#">C++ | </a>
+                            <a href="#">PHP | </a>
+                            <a href="#">数据挖掘 | </a>
+                            <a href="#">搜索算法 | </a>
+                            <a href="#">精准推荐 | </a>
+                            <a href="#">C | </a>
+                            <a href="#">C# | </a>
+                            <a href="#">全栈工程师 | </a>
+                            <a href="#">.NET | </a>
+                            <a href="#">Hadoop | </a> 
+                            <a href="#">Python | </a>
+                            <a href="#">Delphi | </a> 
+                            <a href="#">VB | </a> 
+                            <a href="#">Perl | </a>
+                            <a href="#">Ruby | </a>
+                            <a href="#">Node.js | </a>
+                            <a href="#">Go | </a>
+                            <a href="#">ASP | </a>
+                            <a href="#">Shell | </a>
+                            <a href="#">其它...</a>         
+                        </span>
+                    </li>
+                    <li>
+                        <p>移动开发</p>
+                        <span>
+                            <a href="#">HTML5 | </a>
+                            <a href="#">Android | </a>
+                            <a href="#">iOS | </a>
+                            <a href="#">WP | </a>       
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>前端开发</p>
+                        <span>
+                            <a href="#">web前端 | </a>
+                            <a href="#">Flash | </a>
+                            <a href="#">html5 | </a>
+                            <a href="#">JavaScript | </a>       
+                            <a href="#">U3D | </a>
+                            <a href="#">COCOS2D-X</a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>人工智能</p>
+                        <span>
+                            <a href="#">深度学习 | </a>
+                            <a href="#">机器学习 | </a>
+                            <a href="#">图像处理 | </a>
+                            <a href="#">图像识别 | </a>       
+                            <a href="#">语音识别 | </a>
+                            <a href="#">机器视觉 | </a>
+                            <a href="#">算法工程师 | </a>
+                            <a href="#">自然语言处理 | </a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="part part4">
+                <ul>
+                    <li>
+                        <p>后端开发</p>
+                        <span>
+                            <a href="#">Java | </a>
+                            <a href="#">C++ | </a>
+                            <a href="#">PHP | </a>
+                            <a href="#">数据挖掘 | </a>
+                            <a href="#">搜索算法 | </a>
+                            <a href="#">精准推荐 | </a>
+                            <a href="#">C | </a>
+                            <a href="#">C# | </a>
+                            <a href="#">全栈工程师 | </a>
+                            <a href="#">.NET | </a>
+                            <a href="#">Hadoop | </a> 
+                            <a href="#">Python | </a>
+                            <a href="#">Delphi | </a> 
+                            <a href="#">VB | </a> 
+                            <a href="#">Perl | </a>
+                            <a href="#">Ruby | </a>
+                            <a href="#">Node.js | </a>
+                            <a href="#">Go | </a>
+                            <a href="#">ASP | </a>
+                            <a href="#">Shell | </a>
+                            <a href="#">其它...</a>         
+                        </span>
+                    </li>
+                    <li>
+                        <p>移动开发</p>
+                        <span>
+                            <a href="#">HTML5 | </a>
+                            <a href="#">Android | </a>
+                            <a href="#">iOS | </a>
+                            <a href="#">WP | </a>       
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>前端开发</p>
+                        <span>
+                            <a href="#">web前端 | </a>
+                            <a href="#">Flash | </a>
+                            <a href="#">html5 | </a>
+                            <a href="#">JavaScript | </a>       
+                            <a href="#">U3D | </a>
+                            <a href="#">COCOS2D-X</a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>人工智能</p>
+                        <span>
+                            <a href="#">深度学习 | </a>
+                            <a href="#">机器学习 | </a>
+                            <a href="#">图像处理 | </a>
+                            <a href="#">图像识别 | </a>       
+                            <a href="#">语音识别 | </a>
+                            <a href="#">机器视觉 | </a>
+                            <a href="#">算法工程师 | </a>
+                            <a href="#">自然语言处理 | </a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="part part5">
+                   <ul>
+                    <li>
+                        <p>后端开发</p>
+                        <span>
+                            <a href="#">Java | </a>
+                            <a href="#">C++ | </a>
+                            <a href="#">PHP | </a>
+                            <a href="#">数据挖掘 | </a>
+                            <a href="#">搜索算法 | </a>
+                            <a href="#">精准推荐 | </a>
+                            <a href="#">C | </a>
+                            <a href="#">C# | </a>
+                            <a href="#">全栈工程师 | </a>
+                            <a href="#">.NET | </a>
+                            <a href="#">Hadoop | </a> 
+                            <a href="#">Python | </a>
+                            <a href="#">Delphi | </a> 
+                            <a href="#">VB | </a> 
+                            <a href="#">Perl | </a>
+                            <a href="#">Ruby | </a>
+                            <a href="#">Node.js | </a>
+                            <a href="#">Go | </a>
+                            <a href="#">ASP | </a>
+                            <a href="#">Shell | </a>
+                            <a href="#">其它...</a>         
+                        </span>
+                    </li>
+                    <li>
+                        <p>移动开发</p>
+                        <span>
+                            <a href="#">HTML5 | </a>
+                            <a href="#">Android | </a>
+                            <a href="#">iOS | </a>
+                            <a href="#">WP | </a>       
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>前端开发</p>
+                        <span>
+                            <a href="#">web前端 | </a>
+                            <a href="#">Flash | </a>
+                            <a href="#">html5 | </a>
+                            <a href="#">JavaScript | </a>       
+                            <a href="#">U3D | </a>
+                            <a href="#">COCOS2D-X</a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                    <li>
+                        <p>人工智能</p>
+                        <span>
+                            <a href="#">深度学习 | </a>
+                            <a href="#">机器学习 | </a>
+                            <a href="#">图像处理 | </a>
+                            <a href="#">图像识别 | </a>       
+                            <a href="#">语音识别 | </a>
+                            <a href="#">机器视觉 | </a>
+                            <a href="#">算法工程师 | </a>
+                            <a href="#">自然语言处理 | </a>
+                            <a href="#">其他...</a>
+                        </span>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        <!--纯js制作轮播图  -->
+        <div id="banner">
+			<img src="images/banner1.jpg" alt="" />
+			<img src="images/banner2.jpg" alt="" />
+			<img src="images/banner3.jpg" alt="" />
+            <div id="lis">
+                <ul>
+                    <li class="active"><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                    <li><a href="#"></a></li>
+                </ul>
+            </div>
+		</div>
+        </div>
+    </div>
+    <div id="Tabs">
+        <div id="content-Tabs">
+            <ul id="Tabs-ul">  
+                <li class="active"><a href="#">推荐职位</a></li>
+                <li><a href="#">热门职位</a></li>
+                <li><a href="#">最新职位</a></li>
+            </ul>
+            <div class="position">
+                <ul>
+                    <li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li><!--  
+                --><li>
+                        <div class="recommend">
+                            <a href="#">web前端工程师</a>
+                            <span class="money">18k-35k</span>
+                            <p>经验不限/本科</p>
+                            <span class="skils">游戏</span>
+                            <span class="skils">html</span>
+                            <span class="skils">高级</span>
+                            <p class="line"></p>
+                            <img src="images/CgYXBlTUV_qALGv0AABEuOJDipU378.jpg" alt="">
+                            <span class="name">腾讯<br>
+                            移动互联网,游戏/上市公司/深圳,科技园</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <a id="more" href="./positions.html">更多职位...</a>
+        </div>
+    </div>
+    <div id="company">
+        <div id="content-company">
+            <p><span>热门公司</span></p>
+            <ul id="com-list">
+                <li>
+                    <div id="com-box">
+                        <img src="images/CgYXBlTUWAmATAcqAAC5oYUttZQ359.jpg" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/CgYXBlTUWAqAD2MFAACAL_mc3X0510.png" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/CgYXBlTUWA2AAPrCAAA-1Ke5ppc178.jpg" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+               </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/CgqKkVg1FAqAdTCgAAAPsmZpIx0793.jpg" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/CgpzWlYcb_aAMmEkAAAjcr_zd-U469.png" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/CgpEMllUbySAOpFqAAAk1irepok085.png" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/Cgp3O1ad2COAJMTCAAAntSNYcpo326.png" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                           <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li><!--  
+                --><li>
+                    <div id="com-box">
+                        <img src="images/Cgo8PFTUWBCAcSJHAAB-yfiYxHM640.png" alt="">
+                        <p><a href="#">盛天网络</a></p>
+                        <p id="p">游戏,文化娱乐/上市公司</p>
+                        <p>让精彩互联生活无处不在</p>
+                        <div id="box-p">
+                            <span>
+                                <i>14</i><br>
+                                <span>面试评价</span>
+                            </span>
+                            <span>
+                                <i>5</i><br>
+                                <span>在招职位</span>
+                            </span>
+                            <span>
+                                <i>5%</i><br>
+                                <span>简历处理率</span>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a id="more" href="company.html">更多公司...</a>
+        </div>
+    </div>
+    <!--友情连接  -->
+    <div id="connect">
+        <div id="content-connect">
+            <p><span>友情链接</span></p>
+            <span id="open">展开>></span>
+            <ul>
+                <li><a href="#">飞猿网</a></li>
+                <li><a href="#">大鲲</a></li>
+                <li><a href="#">招聘</a></li>
+                <li><a href="#">app下载</a></li>
+                <li><a href="#">飞猿云</a></li>
+                <li><a href="#">中大网校</a></li>
+                <li><a href="#">人人都是产品经理</a></li>
+                <li><a href="#">教师招聘</a></li>
+                <li><a href="#">新疆人才网</a></li>
+                <li><a href="#">研究报告</a></li>
+                <li><a href="#">互联网的一些事</a></li>
+                <li><a href="#">人才招聘网</a></li>
+                <li><a href="#">找工作</a></li>
+                <li><a href="#">字典</a></li>
+                <li class="zhankai"><a href="#">飞猿网</a></li>
+                <li class="zhankai"><a href="#">大鲲</a></li>
+                <li class="zhankai"><a href="#">招聘</a></li>
+                <li class="zhankai"><a href="#">app下载</a></li>
+                <li class="zhankai"><a href="#">飞猿云</a></li>
+                <li class="zhankai"><a href="#">中大网校</a></li>
+                <li class="zhankai"><a href="#">人人都是产品经理</a></li>
+                <li class="zhankai"><a href="#">教师招聘</a></li>
+                <li class="zhankai"><a href="#">新疆人才网</a></li>
+                <li class="zhankai"><a href="#">研究报告</a></li>
+                <li class="zhankai"><a href="#">互联网的一些事</a></li>
+                <li class="zhankai"><a href="#">人才招聘网</a></li>
+                <li class="zhankai"><a href="#">找工作</a></li>
+                <li class="zhankai"><a href="#">字典</a></li>
+                <li class="zhankai"><a href="#">飞猿网</a></li>
+                <li class="zhankai"><a href="#">大鲲</a></li>
+                <li class="zhankai"><a href="#">招聘</a></li>
+                <li class="zhankai"><a href="#">app下载</a></li>
+                <li class="zhankai"><a href="#">飞猿云</a></li>
+                <li class="zhankai"><a href="#">中大网校</a></li>
+                <li class="zhankai"><a href="#">人人都是产品经理</a></li>
+                <li class="zhankai"><a href="#">教师招聘</a></li>
+                <li class="zhankai"><a href="#">新疆人才网</a></li>
+                <li class="zhankai"><a href="#">研究报告</a></li>
+                <li class="zhankai close" id=""><<收起...</li>
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="content-footer">
+            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+            <a class="footer-link">飞猿app<img src="images/new_v1_534bcc8.png"></img></a>
+            <a class="footer-link" href="#">飞猿微信</a>
+            <a class="footer-link" href="#">飞猿小程序</a>
+            <a href="#">飞猿微博</a>
+            <a href="#">帮助中心</a>
+            <a href="#">联系我们</a>
+            <a href="#">招聘解决方案</a>
+            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+            <p>安全联盟  ©2017fefe Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+        </div>
+    </div>
+</div>
+ <script src="component/nav/nav.js"></script>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        components:{toptitle:toptitle},
+    })
+</script>
+</body>
+
+</html>

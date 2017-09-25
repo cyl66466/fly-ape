@@ -1,0 +1,158 @@
+*{margin: 0;padding: 0}
+div#app>div{
+	width: 500px;
+	height: 500px;
+	/*border:1px solid red;*/
+	margin:90px auto;
+	font-family: 微软雅黑;
+}
+ul#resumeUl{
+	list-style: none;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	
+}
+ul#resumeUl li{
+	/*border:1px solid red;*/
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transition:all 0.6s linear;
+	background-image: url(../images/bg.png);
+	opacity: 0;
+	/*padding:30px;*/
+	/*text-align: center;*/
+}
+ul#resumeUl li:first-child{
+	background-color: gray;
+	/*opacity:1;*/
+	/*display: block;*/
+}
+ul#resumeUl li:first-child div.preImg{
+	height: 100px;
+	text-align: center;
+
+}
+ul#resumeUl li:nth-child(2){
+	background-color: #555;
+	left: 100%;
+}
+ul#resumeUl li:nth-child(3){
+	background-color: lightblue;
+	left: 200%;
+	
+}
+ul#resumeUl li:first-child p,ul#resumeUl li:nth-child(2) p,ul#resumeUl li:nth-child(3) p{
+	text-align: center;
+	font-size: 24px;
+	padding: 10px 20px;
+	color:#9f9f9f;
+}
+ul#resumeUl li:first-child div,ul#resumeUl li:nth-child(2) div,ul#resumeUl li:nth-child(3) div{
+	display: block;
+	margin:0 auto;
+	/*border:1px solid red;*/
+	width: 80%;
+	height: 16%;
+}
+ul#resumeUl li:first-child div label,ul#resumeUl li:nth-child(2)  div label,ul#resumeUl li:nth-child(3) div label{
+	display: block;
+    color: #afafa9;
+    padding-bottom: 4px;
+    padding-left: 3px;
+}
+ul#resumeUl li:first-child div input,ul#resumeUl li:nth-child(2) div input,ul#resumeUl li:nth-child(3) div input{
+	border: 0;
+    text-align: left;
+    padding: 0 17px;
+    width: 356px;
+    height: 46px;
+    font-size: 20px;
+    line-height: 24px;
+    background-color: #fff;
+    box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+}
+ul#resumeUl li:first-child div.radio{  /*单选框*/
+	text-align: center;
+	/*border:1px solid red;*/
+	box-sizing:border-box;
+	height: 40px;
+	margin-top: 20px;
+}
+ul#resumeUl li:first-child div.radio input{
+	width: 20px;
+	height: 20px;
+	padding-left:50px;
+	vertical-align: middle;
+    box-shadow: none;
+
+
+}
+ul#resumeUl li:first-child div.radio label{
+	display: inline-block;
+	padding-right: 20px;
+}
+ul#resumeUl li:nth-child(2) div select,ul#resumeUl li:nth-child(3) div select{
+	width: 50%;
+	padding: 10px 20px;
+	font-size: 20px;
+	box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+}
+ul#resumeUl li:nth-child(2) div.area textarea,ul#resumeUl li:nth-child(3) div.tips textarea{
+	width: 100%;
+	height: 80px;
+	resize:none;
+	box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+    padding: 5px;
+	font-size: 18px;
+}
+ul#resumeUl li:nth-child(3) div.tips p{
+	text-align: left;
+	font-size: 20px;
+	margin-left: -20px;
+
+}
+ul#resumeUl li:nth-child(3) span.cancel{
+	background-color: transparent;
+	right: 100px;
+	color:gray;
+}
+ul#resumeUl li div{position: relative;}
+ul#resumeUl li div span{
+	position: absolute;right: 0px;top: 65px;
+	font-size: 14px;
+	color: red;
+	width: 200px;
+
+	background-color: transparent;
+	opacity: .7;
+	/*cursor: help;*/
+	/*padding: 0px 0px;*/
+
+}
+ul#resumeUl li span{
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	cursor: pointer;
+	color:white;
+	width: 80px;
+	padding: 10px 2px;
+	text-align: center;
+	display: inline-block;
+	background-color: #09c084;
+}
+ul#resumeUl li span.lastLi{
+	left: 20px;
+}
+ul#resumeUl li.active{
+	left: 0;
+	opacity: 1;
+}
+
+/*上传头像组件*/

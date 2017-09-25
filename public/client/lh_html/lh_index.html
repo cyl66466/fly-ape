@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>管理员页面</title>
+		<link rel="stylesheet" href="../lh_css/lh_index.css" />
+		<link rel="stylesheet" href="../lh_components/grid/lh_grid.css" />
+		<link rel="stylesheet" href="../lh_components/tabs/lh_tabs.css" />
+		<link rel="stylesheet" href="../lh_components/menu/lh_menu.css" />
+		<link rel="stylesheet" href="../lh_components/page/lh_page.css" />
+	</head>
+	<body>
+		<div class="bgheader"></div>
+		<div id="app">
+			<div class="header">
+				<img src="../lh_img/logo.png" alt="拉钩" />
+				<h1>飞猿后台</h1>
+				<ul>
+					<li>{{usename}}</li>
+					<li @click="quit">| 退出</li>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="left">
+					<mymenu></mymenu>
+				</div>
+				<div class="right">
+					<tabs></tabs>
+				</div>
+			</div>
+			<div class="footer">
+		        <div id="content-footer">
+		            <img class="img" src="../lh_img/footer_01.PNG" alt="">
+		            <img class="img" src="../lh_img/footer_02.png" alt="">
+		            <img class="img" src="../lh_img/lagou-mina-code.png" alt="">
+		            <img src="../lh_img/footer_lagou_icon.png" alt="">
+		            <a class="footer-link">拉勾app<img src="../lh_img/new_v1.png"></img></a>
+		            <a class="footer-link" href="#">拉勾微信</a>
+		            <a class="footer-link" href="#">拉勾小程序</a>
+		            <a href="#">拉勾微博</a>
+		            <a href="#">帮助中心</a>
+		            <a href="#">联系我们</a>
+		            <a href="#">招聘解决方案</a>
+		            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+		            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+		        </div>
+		    </div>
+		</div>
+		</template>
+		<!--page组件-->
+		<template id="page">
+			<div class="grid-seporator">
+				<ul>
+					<li class="click" @click="change(1)">首页</li>
+					<li class="click" @click="change(pageConfig.curPage-1)">上一页</li>
+					<li class="click" @click="--pageConfig.pageGroupIndex" v-show="pageConfig.pageGroupIndex>1">...</li>
+					<li class="click" v-for="i in pages" :class={active:i==pageConfig.curPage} v-show="i<=pageConfig.pageGroupIndex*pageGroupNum&&i>=(pageConfig.pageGroupIndex-1)*pageGroupNum+1" v-text="i" @click="change(i)"></li>
+					<li class="click" @click="++pageConfig.pageGroupIndex" v-show="pageConfig.pageGroupIndex<pageGroups">...</li>
+					<li class="click" @click="change(pageConfig.curPage+1)">下一页</li>
+					<li class="click" @click="change(pages)">尾页</li>
+					<li>第{{pageConfig.curPage}}页</li>
+					<li>共{{pages}}页</li>
+					<input type="button" value="回看" @click="change(pageConfig.oldPage)" />
+				</ul>
+				<div class="select">
+					<select v-model="pageSize">
+						<option value="5">5</option>
+						<option value="8">8</option>
+						<option value="10">10</option>
+						<option value="12">12</option>
+					</select>
+					<span>条/页</span>
+				</div>
+			</div>
+		</template>
+		<!--grid组件-->
+		<template id="grid">
+			<div>
+				<table class="grid-table">
+					<caption>
+						<h2 v-text="state.headline"></h2>
+					</caption>
+					<thead>
+						<tr>
+							<th v-for="item in state.headers" v-text="item"></th>
+							<th v-if="state.isEdit">操作</th>
+						</tr>
+						<tr v-if="state.isEdit">
+							<th v-for="item in state.fields" :class="{tip:item.name=='tips'}">
+								<input type="text" v-model="state.newTemp[item.name]" :placeholder="item.name"  :class="{introduce:item.name=='introduce'}"/>
+							</th>
+							<th>
+								<span @click="add">添 加</span>
+								<span @click="serch">查 找</span>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr v-for="(item,index) in items">
+							<td v-for="item2 in state.fields"  :class="{introduce:item2.name=='introduce'}">
+								<input v-if="item2.name==key" type="button" :value="item[item2.name]" />
+								<input v-show="item.form=='button'&&item2.name!=key" type="button" :value="item[item2.name]"/>
+								<input v-show="item.form=='text'&&item2.name!=key" type="text" v-model="state.temp[item2.name]"  :class="{tip:item2.name=='tips'}" />
+							</td>
+							<td v-if="state.isEdit">
+								<span v-text="item.btn1" @click="fnOne($event,item[key],index)"></span>
+								<span v-text="item.btn2" @click="fnTwo($event,item[key],index)"></span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<page :grid-name="gridName" @change="changePage"></page>
+			</div>
+		</template>
+		<!-- menu组件 -->
+		<template id="menu">
+			<ul class='mainMenu'>
+				<li v-for="(item,i) in menus">
+					<span @click="toggle(i)" v-text='item.name' ></span>
+					<ul class='subMenu' v-show='item.isShow'>
+						<li v-for='sub in item.subMenus' v-text='sub.name' @click='addTab(sub)'></li>
+					</ul>
+				</li>
+			</ul>
+		</template>
+		<!-- tabs组件 -->
+		<template id='tabs'>
+			<div class='tabs'>
+				<ul class='tab-title'>
+					<li v-for="(item,index) in $store.state.tabs.titles" :class="{active:index==$store.state.tabs.curIndex}">
+						<span @click='delTab(index)'>×</span>
+						<label v-text="item" @click='$store.commit("tabs/toggleTab",index)'></label>
+					</li>
+				</ul>
+				<div class='tab-content'>
+					<div v-for="(item,index) in $store.state.grid.grids" v-show='index==$store.state.tabs.curIndex' :key="item">
+						<grid :grid-name='item' ></grid>
+					</div>
+					<div v-show="'-1'==$store.state.tabs.curIndex">
+						
+					</div>
+				</div>
+			</div>
+		</template>
+		<script src="../lh_js/jquery-3.2.1.min.js"></script>
+		<script src="../lh_js/clientStorge.js"></script>
+		<!--引入vue全家桶-->
+		<script src="../lh_js/vue.js"></script>
+		<script src="../lh_js/vue-resource.js"></script>
+		<script src="../lh_js/vuex.js"></script>
+		<!--引入store-->
+		<script src="../lh_store/lh_grid_store.js"></script>
+		<script src="../lh_store/lh_tabs_store.js"></script>
+		<script src="../lh_store/store.js"></script>
+		<!--引入组件-->
+		<script src="../lh_components/page/lh_page.js"></script>
+		<script src="../lh_components/grid/lh_grid.js"></script>
+		<script src="../lh_components/tabs/lh_tabs.js"></script>
+		<script src="../lh_components/menu/lh_menu.js"></script>
+		<script>
+			var vm=new Vue({
+				el:'#app',
+				
+		        data:{
+		            usename:"",
+		            isLogin:true, //判断用户是否登录
+		            password:"",
+		            toggle:true,   //切换登录或者注册
+		        },
+		        created:function(){
+		            if(client.fetch()==""){
+		                this.isLogin=true;
+		            }else{
+		                this.isLogin=false;
+		                // console.log(client.fetch().usename)
+		                this.usename=client.fetch().usename;
+		            }
+		        },
+				methods:{
+					quit:function(){//退出登录
+						if(confirm("退出登录？")){
+		                    this.isLogin=true;
+		                    console.log(this.isLogin);
+		                    client.clear();
+		                    setTimeout(function(){
+								window.location.href="../login.html";
+							},300)
+		                }else return;
+					}
+				},
+				store:store,
+			});
+		</script>
+	</body>
+</html>

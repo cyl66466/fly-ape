@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.js"></script>
+	<style>
+		input#preImg{
+			font-size: 0px;
+			opacity: 0;
+		}
+		label{
+			width:100px;
+			height: 100px;
+			border-radius: 100px;
+			/*border:1px solid red;*/
+			background-color: #ccc;
+			display: inline-block;
+			overflow: hidden;
+		}
+		label img{
+			width: 100px;
+			height: 100px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<imgup :img-url="imgUrl" @img-preview="text"></imgup>
+	</div>
+	
+	<!-- 上传图片组件 -->
+	<template id="imgup">
+		<div>			
+			<label for="preImg"><img :src='imgUrl' alt=""></label>
+			<input type="file"  @change="uploading" ref="inputer" id="preImg">
+		</div>
+	</template>
+
+	<script>
+		var imgup=Vue.extend({
+			template:"#imgup",
+			props:["imgUrl"],
+			data:function(){
+				return {
+					file:"",
+				}
+			},
+			methods:{
+				uploading:function(){
+					if(this.$refs.inputer.files.length==0) return;
+					var inputDom=this.$refs.inputer; // 通过dom获取文件数据
+					var file=inputDom.files[0];
+					var size=Math.floor(inputDom.files[0].size/1024);
+					if(size>12){alert("大了"); return false};
+					this.imgPreview(file);															
+				},
+				imgPreview:function(file){
+					var that=this;
+					if(!file||!window.FileReader) return;
+					if(/^image/.test(file.type)){
+						var reader=new FileReader();
+						reader.readAsDataURL(file);  // 将图片将转成 base64 格式
+						reader.onloadend=function(){   // 读取成功后的回调
+							imgUrl=this.result;				
+							// console.log(this.result);
+							that.$emit('img-preview',imgUrl);
+
+						}
+					}
+
+
+				}
+			}
+
+		})
+	</script>
+	<script>
+		var vm=new Vue({
+			el:"#app",
+			components:{imgup:imgup},
+			data:{	
+				imgUrl:"",		
+			},
+			methods:{
+				text:function(target){
+					this.imgUrl=target;
+					console.log(this.imgUrl);
+				}
+			}
+		
+
+		})
+	</script>
+</body>
+</html>

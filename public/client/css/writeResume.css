@@ -1,0 +1,333 @@
+*{padding:0;margin:0;}
+body,html{width: 100%;height: 100%;}
+a{text-decoration: none;}
+ul{list-style: none;}
+
+/*airport  小火箭*/
+#airport{
+    position:fixed;
+    display:none;
+    width: 50px;height: 50px;
+    bottom:100px;right:100px;
+    background-image: url('../images/backtop-1.png');
+    background-repeat: no-repeat;
+    z-index:99;
+}
+#airport:hover{
+    background-image: url('../images/backtop-2.png');
+}
+
+/*头部登陆条  */
+#title{
+    width: 100%;
+    font-size: 14px;
+    height: 31px;
+    line-height: 31px;
+    background: #333333;
+    min-width: 600px;
+}
+#title>#title-content{
+    width: 1288px;
+    margin: 0 auto;
+    height: 100%;
+}
+#title>#title-content>#title-left{
+    display: inline-block;
+}
+#title>#title-content>#title-right{
+    display: inline-block;
+    float:right;
+}
+#title>#title-content>#title-left>span #nav-logo{color:#08d7a2;margin-right:5px;}
+#title>#title-content>#title-left>span #nav-logo>img{margin-right:5px;vertical-align:sub;} 
+#title>#title-content>#title-left>span #nav-a{color:#c4c3c3;}
+#title>#title-content>#title-right>span a{color:#c4c3c3;}
+#title>#title-content>#title-left>span #nav-a:hover{color:white;}
+#title>#title-content>#title-right>span a:hover{color:white;}
+#title>#title-content>#title-right>span.titleuser{position: relative;z-index: 99}
+#title>#title-content>#title-right>span.titleuser:hover ul{display: block;}
+#title>#title-content>#title-right>span.titleuser ul{position: absolute;right: -29px;
+    display: none;top: -8px;text-align: center;cursor: pointer;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child{
+    background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child:hover{ background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li{width: 90px;background-color: #333333;color: #9f9f9f}
+#title>#title-content>#title-right>span.titleuser ul li:hover{color:white;background-color: #111;}
+/*目录条  */
+#menu{width: 100%;height:57px;background: #fafafa;margin-top:-5px;min-width: 600px; }
+#menu>#menu-content{width:1200px;height: 100%;margin: 0 auto;}
+#menu>#menu-content>#menu-logo{float:left;margin-top:6px; }
+#menu>#menu-content>#menu-logo>.menu-national{vertical-align:super;}
+#menu>#menu-content>#menu-logo>.menu-place{
+    vertical-align:super;
+    font-size: 12px;
+    color:#999999;
+    margin-left:5px; 
+    cursor: pointer;
+}
+#menu>#menu-content>ul{margin-left:230px; margin-top:5px;}
+#menu>#menu-content>ul>li{
+    float:left;
+    margin-left:5%;
+    line-height: 50px;
+    font-size:19px;
+}
+#menu>#menu-content>ul>li>a{display:inline-block;color:#999;height: 55px;}
+#menu>#menu-content>ul>li:nth-child(1)>a{color:green;border-bottom:2px solid green;}
+#menu>#menu-content>ul>li>a:hover{color:green;border-bottom:2px solid green;}
+
+
+/*footer  */
+#footer{margin-top:30px;width: 100%;border-top:1px solid #ccc;min-width: 600px;}
+#footer>#content-footer{
+    border-top:1px solid #ccc;
+    width: 1200px;height: 60px;
+    margin: 0 auto;
+    position: relative;
+}
+#footer>#content-footer>img{
+    display: inline-block;
+    margin-top: 5px;
+    margin-left:50px; 
+}
+#footer>#content-footer>.img{
+    width: 150px;height: 150px;
+    position: absolute;
+    bottom:102%;
+    display: none; 
+}
+#footer>#content-footer>.img:nth-child(1){left:200px;}
+#footer>#content-footer>.img:nth-child(2){left:300px;}
+#footer>#content-footer>.img:nth-child(3){left:370px;}
+#footer>#content-footer>a{font-size:14px;color:#333;display: inline-block;margin: 5px;}
+#footer>#content-footer>span{font-size:13px;color:#aaa;}
+#footer>#content-footer>a:hover{color:#00b33a;}
+#footer>#content-footer>p{text-align: center;font-size:13px;color:#aaa;}
+
+
+
+
+div#resumeMain{
+    width: 500px;
+    height: 500px;
+    /*border:1px solid red;*/
+    margin:90px auto;
+    font-family: 微软雅黑;
+}
+ul#resumeUl{
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    
+}
+ul#resumeUl li{
+    /*border:1px solid red;*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition:all 0.6s linear;
+    background-image: url(../images/bg.png);
+    opacity: 0;
+    /*padding:30px;*/
+    /*text-align: center;*/
+}
+ul#resumeUl li:first-child{
+    background-color: gray;
+    /*opacity:1;*/
+    /*display: block;*/
+}
+ul#resumeUl li:first-child div.preImg{
+    height: 100px;
+    text-align: center;
+
+}
+ul#resumeUl li:nth-child(2){
+    background-color: #555;
+    left: 100%;
+}
+ul#resumeUl li:nth-child(3){
+    background-color: lightblue;
+    left: 200%;
+    
+}
+ul#resumeUl li:nth-child(4){
+    background-color: lightblue;
+    left: 300%;
+    
+}
+ul#resumeUl li:first-child p,ul#resumeUl li:nth-child(2) p,ul#resumeUl li:nth-child(3) p,ul#resumeUl li:nth-child(4) p{
+    text-align: center;
+    font-size: 24px;
+    padding: 10px 20px;
+    color:#9f9f9f;
+}
+ul#resumeUl li:first-child div,ul#resumeUl li:nth-child(2) div,ul#resumeUl li:nth-child(3) div,ul#resumeUl li:nth-child(4) div{
+    display: block;
+    margin:0 auto;
+    /*border:1px solid red;*/
+    width: 80%;
+    height: 16%;
+}
+ul#resumeUl li:first-child div label,ul#resumeUl li:nth-child(2)  div label,ul#resumeUl li:nth-child(3) div label,ul#resumeUl li:nth-child(4) div label{
+    display: block;
+    color: #afafa9;
+    padding-bottom: 4px;
+    padding-left: 3px;
+}
+ul#resumeUl li:first-child div input,ul#resumeUl li:nth-child(2) div input,ul#resumeUl li:nth-child(3) div input,ul#resumeUl li:nth-child(4) div input{
+    border: 0;
+    text-align: left;
+    padding: 0 17px;
+    width: 356px;
+    height: 46px;
+    font-size: 20px;
+    line-height: 24px;
+    background-color: #fff;
+    box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+}
+ul#resumeUl li:first-child div.radio{  /*单选框*/
+    text-align: center;
+    /*border:1px solid red;*/
+    box-sizing:border-box;
+    height: 40px;
+    margin-top: 20px;
+}
+ul#resumeUl li:first-child div.radio input{
+    width: 20px;
+    height: 20px;
+    padding-left:50px;
+    vertical-align: middle;
+    box-shadow: none;
+
+
+}
+ul#resumeUl li:first-child div.radio label{
+    display: inline-block;
+    padding-right: 20px;
+}
+ul#resumeUl li:nth-child(2) div select,ul#resumeUl li:nth-child(3) div select{
+    width: 50%;
+    padding: 10px 20px;
+    font-size: 20px;
+    box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+}
+ul#resumeUl li:nth-child(2) div.area textarea,ul#resumeUl li:nth-child(4) div.tips textarea{
+    width: 100%;
+    height: 80px;
+    resize:none;
+    box-shadow: 3px 3px 6px #333;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 18px;
+}
+ul#resumeUl li:nth-child(4) div.tips{
+    height: 160px;
+    width: 80%;
+    /*border:1px solid red;*/
+    text-align: center;
+}
+ul#resumeUl li:nth-child(4) div.tips p{
+    margin-top: 20px;
+}
+
+ul#resumeUl li:nth-child(3) div.tips p{
+    text-align: left;
+    font-size: 20px;
+    margin-left: -20px;
+
+}
+ul#resumeUl li:nth-child(4) span.cancel{
+    background-color: transparent;
+    right: 100px;
+    color:gray;
+}
+ul#resumeUl li span{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    color:white;
+    width: 80px;
+    padding: 10px 2px;
+    text-align: center;
+    display: inline-block;
+    background-color: #09c084;
+}
+ul#resumeUl li div{position: relative;} /* 正则验证样式*/
+ul#resumeUl li div span{
+    position: absolute;right: 0px;top: 65px;
+    font-size: 14px;
+    color: red;
+    width: 200px;
+
+    background-color: transparent;
+    opacity: .7;
+    /*cursor: help;*/
+    /*padding: 0px 0px;*/
+
+}
+ul#resumeUl li span.lastLi{
+    left: 20px;
+}
+ul#resumeUl li.active{
+    left: 0;
+    opacity: 1;
+}
+
+/*上传头像组件*/
+#preImg{
+    position: relative;
+}
+#preImg input#inputImg{
+    font-size: 0px;
+    opacity: 1;
+    width: 0px;
+    height: 0px;
+    /*border: 1px solid red;*/
+}
+#preImg label{
+    margin:10px auto;
+    width:90px;
+    height: 90px;
+    font-color:white;
+    border-radius: 80px;
+    /*border:1px solid red;*/
+    background-color: rgba(255,255,255,.1);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    font-size: 80px;
+    z-index: 101;
+
+}
+#preImg label:hover>img{
+    opacity: 1;
+    box-shadow: 3px 3px 30px #9f9f9f;
+    
+}
+.photo2{ /* 遮盖层*/
+    position: absolute;
+    left: -1px;
+    top: 1px;
+    width: 100px;
+    opacity:0;
+    height: 100px;
+    /*border: 1px solid red;*/
+}
+ #preImg img.photo1{
+    width: 100px;
+    height: 100px;
+    /*border: 1px solid red;*/
+    /*border: none;*/
+    margin: -5px;
+    z-index: 100;
+    position: absolute;
+    left: 113px;
+    top: 1px;
+    border-radius: 100px;
+
+}

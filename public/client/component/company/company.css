@@ -1,0 +1,155 @@
+*{margin:0;padding: 0;}
+div.companyMain{
+	width: 89%;
+	height: 80%;
+	vertical-align: top;
+	margin:10px auto;
+	/*border:1px solid gray;*/
+}
+div.company{
+	width: 21%;height:270px;
+	float: left;
+	border:1px solid gray;font-family: 微软雅黑;
+	display: inline-block;margin:20px;
+}
+div.company:hover{box-shadow: 0px 0px 6px #9f9f9f;}
+div.company ul{list-style: none;}
+div.company ul li{text-align: center;white-space:nowrap;}
+div.company ul li img{width: 83px;height: 83px;display: inline-block;margin-top: 10px;}
+div.company ul li span{border:1px solid red;}
+div.company ul li.companyName{
+	font-size: 20px;
+	color:#555;
+
+}
+div.company ul li.companyName:hover{
+	color :#00b38a;
+	cursor: pointer;
+}
+div.company ul li.companyType{
+	padding: 4px;
+	color: #999; 
+	/*border:1px solid red;*/
+	width: 240px;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	/*height: 30px;*/
+}
+div.company ul li.companyIntroduce{
+	margin-top: 3px;
+    /*color: #999;    */
+    text-overflow:ellipsis;
+	overflow: hidden;
+    line-height: 22px;
+    font-size: 14px;
+}
+div.company ul li.underLine{
+	width: 90%;
+	height: 0px;
+	display: block;
+	margin: 10px auto;
+	border: 1px dashed gray;
+	
+}
+div.company ul li.companyPencent{
+
+}
+div.company ul li.companyPencent ul{
+	width: 100%;
+	margin-right: -10px;
+}
+div.company ul li.companyPencent ul li{
+	width: 31%;
+	display: inline-block;
+	border-right: 1px solid #999;
+	cursor: pointer;
+}
+div.company ul li.companyPencent ul li:last-child{border-right: none;}
+div.company ul li.companyPencent ul li p{
+	padding: 6px 0px;
+	font-size: 14px;
+	color :#00b38a;
+}
+div.company ul li.companyPencent ul li p.gray{
+	color:gray;
+}
+div.company ul li.companyPencent ul li p.gray:hover{
+	color :#00b38a;
+}
+   
+
+/*排序组件*/
+div.companysort{
+	border: 1px solid #9f9f9f;
+	font-size: 16px;
+	font-family: 微软雅黑;
+}
+div.companysort ul{
+	list-style: none;
+	display: inline-block;
+}
+div.companysort ul li{
+	display: inline-block;
+	cursor: pointer;
+	padding: 10px 10px;
+	margin: 0px 10px;
+}
+div.companysort ul li:hover{
+	background-color: #09c084;
+	color: white;
+}
+div.companysort ul li.cpActive{
+	background-color: #09c084;
+	color: white;
+}
+div.companysort span{
+	margin: 0 20px;
+	display: inline-block;
+}
+
+/*分页组件*/
+div.page{
+	clear: both;
+	text-align: center;
+	width: 80%;
+	/*border:1px solid red;*/
+	margin: 90px auto;
+}
+div.page button{
+	cursor: pointer;
+    color: #555;
+    display: inline-block;
+    border: 1px solid #ededed;
+    /*height: 21px;
+    line-height: 21px;*/
+    padding: 3px 10px;
+    margin: 0 5px;
+    font-size: 14px;
+    background-color: #fff;
+    text-decoration: none;
+}
+div.page ul li:hover,div.page button:hover{
+	background-color: #00b38a;
+	color: white;
+}
+div.page ul{
+	list-style: none;
+	display: inline-block;
+}
+div.page ul li{
+	cursor: pointer;
+    color: #555;
+    display: inline-block;
+    border: 1px solid #ededed;
+    height: 21px;
+    line-height: 21px;
+    padding: 3px 10px;
+    margin: 0 5px;
+    font-size: 14px;
+    text-decoration: none;
+}
+div.page ul li.liactive{
+	background-color: #00b38a;
+	color: white;
+
+}

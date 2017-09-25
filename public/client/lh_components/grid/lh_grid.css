@@ -1,0 +1,88 @@
+ul{list-style: none;}
+input{outline: none;}
+/*表格部分*/
+table{width:1040px;}
+caption{
+	border-bottom: 0px solid transparent;
+	padding: 15px;
+	text-align: left;
+	background-color: #00b38a;
+	color: white;
+}
+table,table th,table td{
+	border:1px solid #00b38a;
+	border-collapse:collapse;
+	text-align: center;
+	background-color: #fafafa;
+	
+}
+table th,td{padding: 10px 0px;}
+table tr{background-color: white;}
+table>thead>tr>th>span{
+	border: 1px solid #00B38A;
+	background-color: #fff;
+	display: inline-block;
+	font-size: 15px;
+	padding: 3px 3px;
+	border-radius: 5px;
+	color: #00B38A;
+	text-align: center;
+	cursor: pointer;
+}
+table>thead>tr>th>span:last-child{margin-left: 5px;}
+table>thead>tr>th>input[type=text]{
+	width: 100px;height: 30px;
+	text-indent: 1em;
+	border-radius: 5px;
+}
+table>thead>tr>.tip>input[type=text]{
+	width: 260px;
+	border-radius: 5px;
+}
+table>thead>tr>th>input.introduce{
+	width: 160px;
+	border-radius: 5px;
+}
+/*table td{padding: 5px 0px;}*/
+table td input[type=button]{
+	padding:5px 5px;
+	background-color: white;
+	border: 1px solid transparent;
+	font-size: 16px;
+	background-color: #fafafa;
+}
+table>tbody>tr>td>span{
+	/*height: 25px;*/
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 3px 3px;
+	font-size: 15px;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.grid-table>tbody td:last-child>span:first-child{
+	border: 1px solid #ff7a7a;
+	color: #ff7a7a;
+}
+.grid-table>tbody td:last-child>span:last-child{
+	border: 1px solid dodgerblue;
+	color: dodgerblue;
+	margin-left: 5px;
+}
+table>tbody>tr>td>input[type=text]{
+	width: 100px;height: 29px;
+	text-indent: 1em;
+	border-radius: 5px;
+}
+/*table>tbody>tr>td:first-child>input[type=text]{display: none;}*/
+table>tbody>tr>td>input.tip{
+	width: 260px;
+	border-radius: 5px;
+}
+table>tbody>tr>.introduce>input[type=text]{
+	width: 160px;
+	border-radius: 5px;
+}
+
+
+

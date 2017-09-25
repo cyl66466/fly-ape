@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拉勾</title>
+    <link rel="shortcut icon" href="images/pagelogo.png"/>
+    <link rel="stylesheet" href="css/positions.css">
+</head>
+<body>
+    <div id="airport"></div>
+    <div id="title">
+        <div id="nav">
+            <div id="nav-left">
+                    <span><a href="index.html" id="nav-logo"><img src="images/app_phone.png">飞猿APP</a></span>
+                <span><a href="#" id="nav-a">| 进入企业版</a></span>
+            </div>
+        <div id="nav-right">
+            <span><a href="#">登陆</a></span>
+            <span><a href="#">| 注册</a></span>
+        </div>
+        </div>
+    </div>
+    <div id="menu">
+        <div id="content-menu">
+            <div id="menu-logo">
+                <img src="images/logo.png" alt="">
+                <span id="menu-name">全国站</span>
+                <span id="menu-city"><a href="#">[切换城市]</a></span>
+            </div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="company.html">公司</a></li>
+                <li><a href="campaus.html">校园</a></li>
+                <li><a href="community.html">言职</a></li>
+            </ul>            
+        </div>
+    </div>
+    <!--vue  -->
+    <div id="app">
+        <div id="content-app">
+            <div id="msg">
+                <positions></positions>
+            </div> 
+            <div id="img">
+                <img src="lh_img/subscribe_img_bfa3e18.jpg" alt="">
+            </div>           
+        </div>
+    </div>
+    <template id="positions">
+        <div id="positions-main">
+            <div id="positions-content">
+                <div id="left">
+                    <div class="positions-left" v-for="p in msg">
+                        <p class="name" ><a href="#" v-text="p.title"></a></p>
+                        <span class="left-money" v-text="p.money"></span>
+                        <span class="left-study" v-text="p.study"></span><br>
+                        <div>
+                            <span class="left-skils" v-for="txt in p.skills" v-text="txt"></span>                            
+                        </div>
+                    </div>
+                </div>
+                <div id="right">
+                    <div class="positions-right" v-for="p in msg">
+                        <p class="right-name" ><a href="#" v-text="p.name"></a></p>
+                        <p class="right-study" v-text="p.like"></p>
+                        <p class="right-content" v-text="p.content"></p>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </template>
+    <div id="footer">
+        <div id="content-footer">
+            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+            <a class="footer-link">拉勾app<img src="images/new_v1_534bcc8.png"></img></a>
+            <a class="footer-link" href="#">拉勾微信</a>
+            <a class="footer-link" href="#">拉勾小程序</a>
+            <a href="#">拉勾微博</a>
+            <a href="#">帮助中心</a>
+            <a href="#">联系我们</a>
+            <a href="#">招聘解决方案</a>
+            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+        </div>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/index.js"></script>
+	<script src='js/vue.js'></script>
+	<script src='js/vue-resource.js'></script>
+	<script>Vue.http.options.emulateJSON=true;</script>
+    <script src="js/positions.js"></script>
+</body>
+</html>

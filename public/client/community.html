@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>言职</title>
+    <link rel="shortcut icon" href="images/pagelogo.png"/>
+    <link rel="stylesheet" href="css/community.css">
+    <script src="js/clientStorge.js"></script>
+    
+</head>
+<body>
+    
+    <!-- 顶部组件 -->
+       <template id="toptitle">
+        <div id="title">
+                <div id="title-content">
+                    <div id="title-left">
+                        <span><a href="index.html" id="nav-logo"><img src="images/app_phone.png">飞猿APP</a></span>
+                        <span><a href="index.html" id="nav-a">| &nbsp;进入企业版</a></span>
+                    </div>
+                    <div id="title-right" v-if="isLogin">
+                        <span><a href="login.html">登陆</a></span>
+                        <span><a href="login.html">| 注册</a></span>
+                    </div>
+                    <div id="title-right" v-else>
+                        <span><a href="#">消息</a></span>
+                         <span><a href="showResume.html">| 我的简历</a></span>
+                        <span><a href="#">| 投递箱</a></span>
+                        <span><a href="#">| 收藏夹</a></span>
+                        <span class="titleuser">
+                            <a href="#">| {{usename}}</a>
+                            <ul>
+                                <li>|</li>
+                                <li>我的订阅</li>
+                                <li>职位邀请</li>
+                                <li>账号设置</li>
+                                <li @click="quit">退出</li>
+                            </ul>
+                        </span>
+                    </div>
+                </div>
+        </div>
+    </template>
+
+
+<div id="app">
+    <div id="airport"></div><!-- 小火箭 -->
+    <toptitle></toptitle>
+    
+    <div id="menu">
+        <div id="menu-content">
+            <div id="menu-logo">
+                <img src="images/logo.png" alt="">
+            </div>
+            <ul>
+                <li><a href="index.html"  target="_self">首页</a></li>
+                <li><a href="company.html"  target="_self">公司</a></li>
+                <li><a href="campaus.html"  target="_self">校园</a></li>
+                <li><a href="community.html">言职</a></li>
+            </ul>            
+        </div>
+    </div>
+    <div id="banner">
+        <div id="banner-content">
+            <h3 class="banner1">言职</h3>
+            <h3 class="banner2">更真实的公司点评社区</h3>
+            <h3 class="banner3">精选推荐</h3>
+        </div>
+    </div>
+    <div id="content">
+        <div id="contentLeft">
+            <news></news>
+        </div>
+        <div id="contentRight">
+            <login-right :login-name="loginName"></login-right>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="content-footer">
+            <img class="img" src="images/CgpFT1lDioCAFqS2AAEeWsD3HHo535.PNG" alt="">
+            <img class="img" src="images/CgpEMllDipeAFlPXAABWmQdg7-E520.PNG" alt="">
+            <img class="img" src="images/lagou-mina-code_0885df6.png" alt="">
+            <img src="images/footer_lagou_icon_29db89e.png" alt="">
+            <a class="footer-link">飞猿app<img src="images/new_v1_534bcc8.png"></img></a>
+            <a class="footer-link" href="#">飞猿微信</a>
+            <a class="footer-link" href="#">飞猿小程序</a>
+            <a href="#">飞猿微博</a>
+            <a href="#">帮助中心</a>
+            <a href="#">联系我们</a>
+            <a href="#">招聘解决方案</a>
+            <span>服务热线：4006-2828-35 (9:00 -18:00)</span>
+            <p>安全联盟  ©2017 Lagou 京ICP备14023790号-2 京公网安备 11010802024043号</p>
+        </div>
+    </div>
+</div>
+
+    <!-- 右侧登录注册的组件模板 -->
+    <template id="loginRight">
+        <div>
+            <div id="login-content" v-if="typeof loginName!='string'">
+                <div id="portrait">
+                    <img src="images/head-portrait.png" alt="">
+                </div>
+                <span>Hi,晚上好</span>
+                <span>登录后可以blablabla~</span>
+                <a href="login.html" class="login-input">登录</a>
+                <a href="login.html" class="reg-input">注册</a>
+         <!--        
+                <input type="button" value="登录" class="login-input">
+                <input type="button" value="注册" class="reg-input"> -->
+                <div id="more-topic">查看更多话题</div>
+            </div>
+            <div v-else id="portrait">
+                 <div>
+                    <img src="images/head-portrait.png" alt="">
+                </div>
+                <p v-text="loginName"></p>
+                <p>欢迎登录~</p>
+                <div id="more-topic">查看更多话题</div>
+            </div>
+        </div>
+    </template>
+    <!-- 新闻组件模板 -->
+    <template id="news">
+        <div id="news-main">
+            <div id="news-content" v-for="(item,index) in content">
+                <div id="news-left">
+                    <a href="#"><img :src="item.imgs" alt=""></a>
+                </div>
+                <div id="news-right">
+                    <span class="people-name1" v-text="item.author"></span>
+                    <span class="people-name2" v-text="item.answerName"></span>
+                    <span class="people-name3">回答了</span>
+                    <h3><a href="#" v-text="item.title"></a></h3>
+                    <transition name="fade">
+                        <div name="news-text" class="news-content-text">
+                            <div class="news-text" v-html="item.text"></div>
+                            <div class="switch" v-text="item.switch" v-if="item.isShow" @click="show(index)"></div>
+                        </div>
+                    </transition>
+                    <span class="comment" v-text="item.commentNumber"></span>
+                    <span class="comment-img">M</span>
+                    <span class="zan" v-text="item.zanNumber"></span>
+                    <span class="zan-img" @click="item.zanNumber++">2</span>
+                    <span class="sharing">分享</span>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <script src="js/clientStorge.js"></script> 
+    <script src="component/nav/nav.js"></script>
+    
+    <script type="text/javascript" src="js/community.js"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <link rel="stylesheet" href="css/testSearch.css">
+    <link rel="stylesheet" href="component/company/company.css">
+</head>
+<body>
+	<div id="app">
+		<search></search>
+	</div>
+	<template id="search">
+		<div class="search">
+			<div class="searchbox">			
+				<div class="searchInput">
+					<span @click="searchtype('name')" :class="{companyActive:searchTypeToggle}">公司</span>
+					<span @click="searchtype('jobs')" :class="{companyActive:!searchTypeToggle}">职位</span>
+					<input type="text" v-model="searchData">
+					<span @click="startsearch" class="search-btn">搜索</span>
+				</div>			
+			</div>
+		
+			<div>
+				<positions :msg="resultData"></positions>	
+            	<page :page-config="pageConfig" @change-page="changePage"></page>
+				
+			</div>
+		</div>
+	</template>
+	
+	
+	<template id="positions">
+		<div>
+			<div class="showType">  <!--  判断行级还是块级显示 -->
+				<button @click="showtype" :disabled="showType">横着</button>
+				<button @click="showtype" :disabled="!showType">方块</button>
+			</div>
+	       <div class="searchResult" v-if="showType">
+	       		<ul v-for="temp in msg">   
+	   				<li class="img"><img :src="temp.img" alt=""></li>
+	   				<li class="name">
+	   					<span v-text="temp.name"></span>
+	   					<span v-text="temp.belong" class="belong"></span>
+	   				</li>			
+	   				<li class="address">
+	   					<label for="">公司地址:</label>
+	   					<span v-text="temp.address"></span>
+	   				</li>
+	   				<li class="type">
+	   					<label for="">公司类型:</label>
+	   					<span v-text="temp.type"></span>
+	   				</li>	
+	   				<li class="introduce">
+	   					<label for="">公司介绍:</label>
+	   					<span v-text="temp.introduce"></span>
+	   				</li>		    		
+	       		</ul>
+	       </div>
+	       <div v-for="item in msg" class="company" v-else="showType">
+                <ul>
+                    <li><img :src='item.img'  alt=""></li>
+                    <li v-text="item.name" class="companyName"></li>
+                    <li v-text="item.type" class="companyType"></li>
+                    <li v-text="item.introduce" class="companyIntroduce"></li>
+                    <li class="underLine"></li>
+                    <li class="companyPencent">
+                        <ul>
+                            <li>
+                                <p v-text="item.faceIns"></p>
+                                <p class="gray">面试评价</p>
+                            </li>
+                            <li>
+                                <p v-text="item.onlineJob"></p>
+                                <p class="gray">在招职位</p>
+                            </li>
+                            <li>
+                                <p v-text="item.sucPencent"></p>
+                                <p class="gray">简历处理率</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+	   </div>
+    </template>
+    <script>
+    var positions=Vue.extend({
+	    template:'#positions',
+	    props:["msg"],
+	    data:function(){
+	        return {
+			showType:false,  //横着显示还是竖着显示
+	            
+	        };        
+	    },
+	    methods:{
+	    	showtype:function(){
+	    		// console.log(this.showType);
+	    		this.showType=!this.showType;
+	    	}
+	    }
+	    // created:function(){
+	    //     //获取数据
+	    //     this.$http({
+	    //         url:'http://localhost:8080/'+'positions'+'/getAll',
+	    //         method:'GET',
+	    //         // data:JSON.stringify({})
+	    //     }).then(function(res){
+	    //         this.msg=res.data.data;
+	    //         console.log(this.msg)
+	    //     },function(){})
+	    // }
+	})
+
+Vue.component('positions',positions);
+</script>
+
+
+<!-- 分页组件 -->
+<template id="page">
+    <div class="page">
+        <button  @click="changePage(pageConfig.curIndex-1)" :disabled="pageConfig.curIndex==1">上一页</button>
+        <ul>
+            <li @click="changePage(1)"  :class="{liactive:pageConfig.curIndex==1}" v-show="pages>1">1</li>
+            <span v-show="pageConfig.curIndex>=5">...</span>
+            <li v-for="i in pages" v-text="i" @click="changePage(i)" v-show="i!=1&&i<pageConfig.curIndex+3&&i>pageConfig.curIndex-2&&i!=pages" :class="{liactive:i==pageConfig.curIndex}"></li>
+            <span v-show="pageConfig.curIndex<=pages-4">...</span>
+            <li v-text="pages" @click="changePage(pages)" :class="{liactive:pageConfig.curIndex==pages}"></li>
+        </ul>
+        <button @click="changePage(pageConfig.curIndex+1)" :disabled="pageConfig.curIndex==pages">下一页</button>
+    </div>
+</template>
+
+<script>
+    var page=Vue.extend({
+        template:"#page",
+        props:['pageConfig'],
+        methods:{
+            changePage:function(index){             
+                index>this.pageConfig.pageGroupIndex*this.pageConfig.pageSize?
+                this.pageConfig.pageGroupIndex++:
+                this.pageConfig.curIndex=index;
+                this.$emit("change-page");
+            }
+        },
+        computed:{
+            pages:function(){
+                return Math.ceil(this.pageConfig.total/this.pageConfig.pageSize)
+            }           
+        },
+    })
+</script>
+<script>
+		var search=Vue.extend({
+			template:"#search",
+			components:{page:page},
+
+			data:function(){
+				return {
+					searchTypeToggle:true,
+					searchConfig:{},
+					searchData:"",
+					searchType:"name",
+					pageConfig:{curIndex:1,pageSize:4,total:0},
+					resultData:[{
+					    id: "023",
+					    name : "美啦",
+					    img : "images/companyLogo/pic23.jpg",
+					    type : "移动互联网,社交网络/成熟型(C轮)",
+					    introduce : "在美啦，遇见最美的自己",
+					    faceIns : "98",
+					    onlineJob : "1",
+					    sucPencent : "100%",
+					    address : "惠州",
+					    belong : "服务"
+					},]
+				}
+			},
+			methods:{
+				startsearch:function(){  //点搜索
+					this.searchConfig={};
+					console.log(this.searchType);
+
+					this.searchConfig[this.searchType]=this.searchData;
+					console.log(this.searchConfig);
+					this.changePage();
+				},
+				search:function(){
+					var that=this;
+					this.$http({
+						url:"http://localhost:8080/companys/getAll/",
+						method:"POST",
+						data:JSON.stringify({
+							pageConfig:this.pageConfig,
+							searchItem:this.searchConfig
+						})
+					}).then(function(res){
+						var obj=res.data;
+						this.resultData=obj.datas;
+						this.pageConfig.total=obj.total;
+						// console.log(this.resultData);
+					},function(){})
+				},
+				searchtype:function(type){
+					if (type=="name") {   //切换样式
+						this.searchTypeToggle=true;
+					}
+					else{
+						this.searchTypeToggle=false;
+
+					}
+					this.searchType=type;
+				},
+
+				changePage:function(type){   //用changeP去调用search   分页
+		            var pageConfig=this.pageConfig;
+		            this.search();
+		        },
+			}
+		})
+		Vue.component("search",search);
+	</script>
+<script>
+	var vm=new Vue({
+		el:"#app",
+
+	})
+</script>
+</body>
+</html>

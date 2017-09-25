@@ -1,0 +1,36 @@
+ul{list-style: none;}
+#title{
+    width: 100%;
+    font-size: 14px;
+    height: 31px;
+    line-height: 31px;
+    background: #333333;
+    min-width: 600px;
+}
+#title>#title-content{
+    width: 1288px;
+    margin: 0 auto;
+    height: 100%;
+}
+#title>#title-content>#title-left{
+    display: inline-block;
+}
+#title>#title-content>#title-right{
+    display: inline-block;
+    float:right;
+}
+#title>#title-content>#title-left>span #nav-logo{color:#08d7a2;margin-right:5px;}
+#title>#title-content>#title-left>span #nav-logo>img{margin-right:5px;vertical-align:sub;} 
+#title>#title-content>#title-left>span #nav-a{color:#c4c3c3;}
+#title>#title-content>#title-right>span a{color:#c4c3c3;}
+#title>#title-content>#title-left>span #nav-a:hover{color:white;}
+#title>#title-content>#title-right>span a:hover{color:white;}
+#title>#title-content>#title-right>span.titleuser{position: relative;z-index: 99;}
+#title>#title-content>#title-right>span.titleuser:hover ul{display: block;}
+#title>#title-content>#title-right>span.titleuser ul{position: absolute;right: -29px;
+    display: none;top: -8px;text-align: center;cursor: pointer;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child{
+    background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li:first-child:hover{ background-color: transparent;color:transparent;}
+#title>#title-content>#title-right>span.titleuser ul li{width: 90px;background-color: #333333;color: #9f9f9f}
+#title>#title-content>#title-right>span.titleuser ul li:hover{color:white;background-color: #111;}
